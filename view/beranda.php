@@ -23,26 +23,37 @@
 
     <div class="" style="overflow-y: none !important;">
     <!-- Navbar -->
-        <nav class="navbar navbar-expand-lg bg-secondary position-relative">
+        <nav class="navbar navbar-expand-lg bg-secondary position-relative shadow">
             <div class="container-fluid">
-            <a class="navbar-brand" href="#">Navbar</a>
+            <a class="navbar-brand ps-3" href="#">
+                <img src="../assets/img/logoKel.png" width="40" alt="">
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Features</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Pricing</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled">Disabled</a>
-                </li>
+                <ul class="navbar-nav d-flex w-100 justify-content-center">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">KTP</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">KK</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">KELURAHAN</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">KEMATIAN</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">PINDAH</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">DATANG</a>
+                    </li>
                 </ul>
             </div>
             </div>
@@ -50,11 +61,11 @@
     <!-- End Navbar -->
 
     <!-- content -->
-        <div id="content" class="container-fluid shadow-md">
+        <div id="content" class="container-fluid">
             <div class="header text-center mx-auto w-100 pt-2">
-                <div class="card w-75 mx-auto">
+                <div class="card w-75 mx-auto  shadow-lg">
                     <div class="card-header">
-                        <h1>Kelurahan Margasari</h1>
+                        <h1>Profil Kelurahan Munjul</h1>
                     </div>
                     <div class="card-body">
                         <p class="text-justify">
