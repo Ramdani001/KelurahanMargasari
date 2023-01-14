@@ -4,7 +4,7 @@
     
     // BASE URL SESUAIKAN DENGAN LINK / HOST MASING - MASING, TERMASUK PROJECT LOCATION NYA JUGA
     $base_url = "http://localhost"; // Sesuaikan dengan Host Masing - Masing
-    $project_location = "/kelurahanMargasari/index.php"; // Sesuaikan dengan nama project yg digunakan
+    $project_location = "/kelurahan/index.php"; // Sesuaikan dengan nama project yg digunakan
 
     // Global Variable
     $vars = explode("/",$_SERVER['REQUEST_URI']);
