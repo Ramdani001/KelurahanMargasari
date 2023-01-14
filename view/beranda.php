@@ -37,16 +37,16 @@
                         <a class="nav-link active" aria-current="page" href="#">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">KTP</a>
+                        <a class="nav-link" href="<?= $main_url ?>index.php/ktp">KTP</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">KK</a>
+                        <a class="nav-link" href="<?= $main_url ?>index.php/kk">KK</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">KELURAHAN</a>
+                        <a href="<?= $main_url ?>index.php/kelahiran" class="nav-link">KELAHIRAN</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">KEMATIAN</a>
+                        <a href="<?= $main_url ?>index.php/kematian" class="nav-link">KEMATIAN</a>
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link">PINDAH</a>
