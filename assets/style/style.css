@@ -1,0 +1,8 @@
+@media (max-width: 576px) {
+    .box {
+        width: 100% !important;
+    }
+    .box .card{
+        width: 100% !important;
+    }
+}
