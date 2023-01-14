@@ -7,15 +7,15 @@
     <title>Login Users</title>
     
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="../assets/style/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../assets/style/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="../../assets/style/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/style/bootstrap/css/bootstrap.css">
     
     <!-- MyStyle -->
-    <link rel="stylesheet" href="../assets/style/style.css">
+    <link rel="stylesheet" href="../../assets/style/style.css">
 
     <!-- Fontawesome -->
-    <link rel="stylesheet" href="../assets/style/fontawesome.css">
-    <link rel="stylesheet" href="../assets/style/fontawesome.min.css">
+    <link rel="stylesheet" href="../../assets/style/fontawesome.css">
+    <link rel="stylesheet" href="../../assets/style/fontawesome.min.css">
 
 </head>
 <body>
@@ -24,7 +24,7 @@
         <div class="box m-auto w-75">
             <div class="card p-5 w-50 m-auto text-center shadow">
                 <div class="card-header" style="margin-top: -30px;">
-                    <img src="../assets/img/logoKel.png" width="80" alt="">
+                    <img src="../../assets/img/logoKel.png" width="80" alt="">
                     <h3>ADMIN</h3>
                 </div>
                 <div class="card-body">
@@ -54,13 +54,13 @@
     </divc>    
 
     <!-- Bootstrap -->
-    <script src="../assets/style/bootstrap/js/bootstrap.js"></script>
-    <script src="../assets/style/bootstrap/js/bootstrap.min.js"></script>
-    <script src="../assets/style/bootstrap/js/bootstrap.bundle.js"></script>
+    <script src="../../assets/style/bootstrap/js/bootstrap.js"></script>
+    <script src="../../assets/style/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../assets/style/bootstrap/js/bootstrap.bundle.js"></script>
 
     <!-- Fontawesome -->
-    <script src="../assets/style/js/fontawesome.all.min.js"></script>
-    <script src="../assets/style/js/jquery-3.3.1.min.js"></script>
+    <script src="../../assets/style/js/fontawesome.all.min.js"></script>
+    <script src="../../assets/style/js/jquery-3.3.1.min.js"></script>
 
 </body>
 </html>
