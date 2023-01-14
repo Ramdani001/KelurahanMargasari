@@ -37,9 +37,9 @@
                         <a class="nav-link " aria-current="page" href="<?= $main_url ?>index.php/beranda">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="<?= $main_url ?>index.php/ktp">KTP</a>
+                        <a class="nav-link" href="<?= $main_url ?>index.php/ktp">KTP</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item kk">
                         <a class="nav-link" href="<?= $main_url ?>index.php/kk">KK</a>
                     </li>
                     <li class="nav-item">
@@ -60,53 +60,7 @@
         </nav>
     <!-- End Navbar -->
 
-     <!-- content -->
-     <div id="content" class="container-fluid">
-            <div class="header text-center mx-auto w-100 pt-2">
-                <div class="card w-75 mx-auto shadow-lg">
-                    <div class="card-header">
-                        <h1>Pengajuan KTP</h1>
-                    </div>
-                    <div class="card-body">
-                        <form action="" method="post" enctype="multipart/form-data" class="w-75 mx-auto">
-                            <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="floatingInput" placeholder="No Pelayanan" name="noPelayanan" disabled>
-                                <label for="floatingInput">No Pelayanan</label>
-                            </div>
-                            <div class="form-floating mb-3">
-                                <select class="form-select" id="floatingSelect" aria-label="Floating label select example" name="nik">
-                                    <option selected>-- NIK --</option>
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
-                                </select>
-                                <label for="floatingSelect">NIK Sesuai Kartu Keluarga</label>
-                            </div>
-                            <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="floatingInput" placeholder="Pelayanan" name="jenisPelayanan" >
-                                <label for="floatingInput">Jenis Pelayanan</label>
-                            </div>
-                            <div class="form-floating mb-3">
-                                <input type="date" class="form-control" id="floatingInput" name="tanggal">
-                                <label for="floatingInput">Tanggal Pengajuan</label>
-                            </div>
-                            
-                            <div class="text-start">
-                                <button type="submit" class="btn btn-primary ps-5 pe-5">
-                                    Submit
-                                </button>
-                                <button type="submit" class="btn btn-primary ps-5 pe-5">
-                                    <a href="<?= $main_url ?>index.php/beranda"></a>
-                                </button>
-                            </div>
-                            
-                        </form>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    <!-- End content -->
+    <h1>KK</h1>
     
 </div>
 

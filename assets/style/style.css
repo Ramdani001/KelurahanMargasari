@@ -18,11 +18,13 @@
 .navbar a{
     color: white !important;
     z-index: 1 !important;
+    margin-right: 10px !important;
 }
 
-.active{
+.active, .active a{
     transform: scale(1.2);
-    color: rgb(190, 228, 253) !important;
+    /* color: rgb(190, 228, 253)!important; */
+    color: red !important;
     text-decoration: underline;
 }
 

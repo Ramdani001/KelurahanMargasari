@@ -1,7 +1,7 @@
 <?php
  
     $base_url = "http://localhost";
-    $project_location = "/kelurahanMargasari/index.php";
+    $project_location = "/kelurahan/index.php";
 
     // Global Variable
     $vars = explode("/",$_SERVER['REQUEST_URI']);
@@ -20,10 +20,11 @@
             case $me.'/ktp' : require "view/ktp.php"; break;
             case $me.'/kk' : require "view/kk.php"; break;
             case $me.'/kk' : require "view/kk.php"; break;
+            case $me.'/kelahiran' : require "view/kelahiran.php"; break;
             case $me.'/kematian' : require "view/kematian.php"; break;
             case $me.'/pindah' : require "view/pindah.php"; break;
             case $me.'/datang' : require "view/datang.php"; break;
-            default: http_response_code(404); echo "404"; break;
+            default: http_response_code(404); require "view/404.php" ; break;
         }
     }catch(\err){
         http_response_code(419);
