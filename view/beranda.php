@@ -7,16 +7,16 @@
     <title>Beranda | Kelurahan</title>
 
   <!-- Bootstrap -->
-  <link rel="stylesheet" href="../assets/style/bootstrap/css/bootstrap.min.css">
-  <link rel="stylesheet" href="../assets/style/bootstrap/css/bootstrap.css">
+  <link rel="stylesheet" href="<?php echo $main_url?>assets/style/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="<?php echo $main_url?>assets/style/bootstrap/css/bootstrap.css">
   
   <!-- MyStyle -->
-  <link rel="stylesheet" href="../assets/style/style.css">
+  <link rel="stylesheet" href="<?php echo $main_url?>assets/style/style.css">
 
   <!-- Fontawesome -->
-  <link rel="stylesheet" href="../assets/style/fontawesome.css">
-  <link rel="stylesheet" href="../assets/style/fontawesome.min.css">
-  <link rel="stylesheet" href="../assets/style/style.css">
+  <link rel="stylesheet" href="<?php echo $main_url?>assets/style/fontawesome.css">
+  <link rel="stylesheet" href="<?php echo $main_url?>assets/style/fontawesome.min.css">
+  <link rel="stylesheet" href="<?php echo $main_url?>assets/style/style.css">
 
 </head>
 <body>
@@ -71,13 +71,13 @@
 
 
  <!-- Bootstrap -->
- <script src="../assets/style/bootstrap/js/bootstrap.js"></script>
- <script src="../assets/style/bootstrap/js/bootstrap.min.js"></script>
- <script src="../assets/style/bootstrap/js/bootstrap.bundle.js"></script>
+ <script src="<?php echo $main_url?>assets/style/bootstrap/js/bootstrap.js"></script>
+ <script src="<?php echo $main_url?>assets/style/bootstrap/js/bootstrap.min.js"></script>
+ <script src="<?php echo $main_url?>assets/style/bootstrap/js/bootstrap.bundle.js"></script>
 
  <!-- Fontawesome -->
- <script src="../assets/style/js/fontawesome.all.min.js"></script>
- <script src="../assets/style/js/jquery-3.3.1.min.js"></script>
+ <script src="<?php echo $main_url?>assets/style/js/fontawesome.all.min.js"></script>
+ <script src="<?php echo $main_url?>assets/style/js/jquery-3.3.1.min.js"></script>
 
 </body>
 </html>
