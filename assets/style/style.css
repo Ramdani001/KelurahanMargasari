@@ -5,4 +5,34 @@
     .box .card{
         width: 100% !important;
     }
+
+    #hero .header h1, #hero .header h2{
+        font-size: 35px !important;
+    }
+
+    #hero .header{
+        padding-top: 170px !important;
+    }
+}
+
+.navbar a{
+    color: white !important;
+    z-index: 1 !important;
+}
+
+#content {
+    height: 90vh;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url('../img/logoKel.png');
+}
+
+#content::before{
+    content: '';
+    inset: 0;
+    opacity: .3;
+    z-index: -2;
+    background: black;
+    position: absolute;
 }
