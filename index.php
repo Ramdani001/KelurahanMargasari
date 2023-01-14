@@ -17,6 +17,8 @@
             case $me.'/beranda' : require "view/beranda.php"; break;
             case $me.'/login_admin' : require "view/admin/login.php"; break;
             case $me.'/login_user' : require "view/users/login.php"; break;
+
+            // Rizkan
             case $me.'/ktp' : require "view/ktp.php"; break;
             case $me.'/kk' : require "view/kk.php"; break;
             case $me.'/kk' : require "view/kk.php"; break;
