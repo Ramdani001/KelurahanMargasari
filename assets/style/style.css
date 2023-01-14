@@ -20,8 +20,20 @@
     z-index: 1 !important;
 }
 
+.active{
+    transform: scale(1.2);
+    color: rgb(190, 228, 253) !important;
+    text-decoration: underline;
+}
+
+.navbar .nav-item  a:hover{
+    transform: scale(1.2);
+    color: rgb(190, 228, 253) !important;
+    text-decoration: underline;
+}
+
 #content {
-    height: 90vh;
+    height: 88.1vh;
     background-size: cover;
     background-position: left;
     background-repeat: no-repeat;
@@ -42,14 +54,15 @@
 }
 
 .card{
-    background-color: transparent;
+    background: transparent;
+    z-index: 1;
 }
 
 .card::before{
     content: '';
     inset: 0;
-    /* opacity: .8; */
+    opacity: .8;
     z-index: -1;
     position: absolute;
-    background: black;
+    background: white;
 }

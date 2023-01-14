@@ -1,6 +1,6 @@
 <?php
     
-    $project_location = "/kelurahanMargasari/index.php";
+    $project_location = "/kelurahan/index.php";
     
     $request = $_SERVER['REQUEST_URI'];
     $me = $project_location;
