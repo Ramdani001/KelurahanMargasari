@@ -71,7 +71,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
         <div class="modal-header">
-            <h1 class="modal-title fs-5" id="staticBackdropLabel">Pengajuan KTP</h1>
+            <h1 class="modal-title fs-5" id="staticBackdropLabel">Pengajuan Kartu Keluarga</h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -83,15 +83,21 @@
                     </label>
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="floatingInput" placeholder="Jenis Pelayanan" name="jenisPelayanan">
-                    <label for="floatingInput">
-                        Jenis Pelayanan
-                    </label>
-                </div>
-                <div class="form-floating mb-3">
                     <input type="date" class="form-control" id="floatingInput" name="tanggal">
                     <label for="floatingInput">
                         Tanggal Pengajuan
+                    </label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="floatingInput" name="nnik">
+                    <label for="floatingInput">
+                        NIK
+                    </label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="floatingInput" name="nama">
+                    <label for="floatingInput">
+                        Nama
                     </label>
                 </div>
                 <div class="form-floating">
@@ -102,7 +108,7 @@
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Understood</button>
+            <button type="submit" name="submit" class="btn btn-primary">Submit</button>
         </div>
         </div>
     </div>
@@ -119,18 +125,24 @@
         <table class="table table-striped table-hover dtabel text-center">
             <thead>
                 <tr>
+                    <th>No</th>
                     <th>No Pelayan</th>
-                    <th>Jenis Pelayanan</th>
-                    <th>Tanggal Pengajuan</th>
+                    <th>Tanggal</th>
+                    <th>NIK</th>
+                    <th>Nama</th>
                     <th>Keterangan</th>
+                    <th>Status</th>
                 </tr>
             </thead>
             <tbody> 
                 <tr>
-                    <td>108 KTP/2023</td>
-                    <td>Pembuatan KTP</td>
+                    <td>1</td>
+                    <td>108 KK/2023</td>
                     <td>23-03-2023</td>
-                    <td>Pengajuan KTP Baru</td>
+                    <td>099875678888</td>
+                    <td>Ramdani</td>
+                    <td>Pengajuran KK</td>
+                    <td>Di Proses</td>
                 </tr>
             </tbody>
         </table>

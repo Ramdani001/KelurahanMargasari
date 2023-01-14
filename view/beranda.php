@@ -52,10 +52,10 @@
                             <a href="<?= $main_url ?>index.php/kematian" class="nav-link">KEMATIAN</a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">PINDAH</a>
+                            <a href="<?= $main_url ?>index.php/pindah" class="nav-link">PINDAH</a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">DATANG</a>
+                            <a href="<?= $main_url ?>index.php/datang" class="nav-link">DATANG</a>
                         </li>
                     </ul>
                     <li class="nav-item position-relative ps-2 bg-primary rounded" style="list-style: none;">

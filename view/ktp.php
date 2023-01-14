@@ -100,7 +100,7 @@
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Understood</button>
+            <button type="submit" name="submit" class="btn btn-primary">Submit</button>
         </div>
         </div>
     </div>
@@ -117,6 +117,7 @@
         <table class="table table-striped table-hover dtabel text-center">
             <thead>
                 <tr>
+                    <th>No</th>
                     <th>No Pelayan</th>
                     <th>Tanggal Pengajuan</th>
                     <th>NIK</th>
@@ -127,6 +128,7 @@
             </thead>
             <tbody> 
                 <tr>
+                    <td>1</td>
                     <td>108 KTP/2023</td>
                     <td>23-03-2023</td>
                     <td>000087984666</td>

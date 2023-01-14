@@ -56,7 +56,16 @@
                     </li>
                 </ul>
                 <li class="nav-item position-relative ps-2 bg-primary rounded" style=" list-style: none;">
-                    <a href="<?= $main_url ?>index.php/datang" class="nav-link text-center" style="text-decoration: none;">LOGOUT</a>
+                <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Profile
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Action</a></li>
+                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+                </div>
                 </li>
             </div>
             </div>
@@ -68,7 +77,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
         <div class="modal-header">
-            <h1 class="modal-title fs-5" id="staticBackdropLabel">Pengajuan KTP</h1>
+            <h1 class="modal-title fs-5" id="staticBackdropLabel">Pengajuan Surat Datang</h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -76,19 +85,25 @@
                 <div class="form-floating mb-3">
                     <input type="text" class="form-control" id="floatingInput" placeholder="290 KTP/2023" name="noPelayanan" disabled>
                     <label for="floatingInput">
-                        290 KTP/2023
-                    </label>
-                </div>
-                <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="floatingInput" placeholder="Jenis Pelayanan" name="jenisPelayanan">
-                    <label for="floatingInput">
-                        Jenis Pelayanan
+                        290 DNG/2023
                     </label>
                 </div>
                 <div class="form-floating mb-3">
                     <input type="date" class="form-control" id="floatingInput" name="tanggal">
                     <label for="floatingInput">
                         Tanggal Pengajuan
+                    </label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="floatingInput" name="nik" placeholder="NIK">
+                    <label for="floatingInput">
+                        NIK
+                    </label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="floatingInput" placeholder="Jenis Pelayanan" name="jenisPelayanan">
+                    <label for="floatingInput">
+                        Jenis Pelayanan
                     </label>
                 </div>
                 <div class="form-floating">
@@ -99,7 +114,7 @@
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Understood</button>
+            <button type="submit" name="submit" class="btn btn-primary">Submit</button>
         </div>
         </div>
     </div>
@@ -112,22 +127,28 @@
     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
     Tambah
     </button>
-    <div class="bg-light rounded mt-2 p-2"> 
+    <div id="contentTable" class="bg-light rounded mt-2 p-2"> 
         <table class="table table-striped table-hover dtabel text-center">
             <thead>
                 <tr>
+                    <th>No</th>
                     <th>No Pelayan</th>
-                    <th>Jenis Pelayanan</th>
                     <th>Tanggal Pengajuan</th>
+                    <th>NIK</th>
+                    <th>Jenis Pelayanan</th>
                     <th>Keterangan</th>
+                    <th>Status</th>
                 </tr>
             </thead>
             <tbody> 
                 <tr>
-                    <td>108 KTP/2023</td>
-                    <td>Pembuatan KTP</td>
+                    <td>1</td>
+                    <td>108 DNG/2023</td>
                     <td>23-03-2023</td>
-                    <td>Pengajuan KTP Baru</td>
+                    <td>210200023</td>
+                    <td>Pembuatan Surat Datang</td>
+                    <td>Pembuatan Baru Surat Datang</td>
+                    <td>Diproses</td>
                 </tr>
             </tbody>
         </table>
