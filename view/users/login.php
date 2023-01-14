@@ -46,7 +46,7 @@
                                 Login
                             </button>
                             <button type="button" class="btn btn-secondary mb-2" class="" style="padding-left: 30px; padding-right: 30px;">
-                                <a href="<?php echo $main_url?>index.html" class="text-decoration-none text-white">
+                                <a href="<?php echo $main_url?>index." class="text-decoration-none text-white">
                                     Batal
                                 </a>
                             </button>
