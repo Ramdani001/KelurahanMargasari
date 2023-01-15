@@ -1,6 +1,8 @@
-<?php
+<?php error_reporting(1);
+    
     include "config/database.php";
     include "config/config.php";
+    include "config/session.php";
     
     // BASE URL SESUAIKAN DENGAN LINK / HOST MASING - MASING, TERMASUK PROJECT LOCATION NYA JUGA
     $base_url = "http://localhost"; // Sesuaikan dengan Host Masing - Masing
@@ -17,9 +19,12 @@
 
     try{
         switch ($request) {
+            case $me.'/' : require "view/beranda.php"; break;
             case $me.'/beranda' : require "view/beranda.php"; break;
             case $me.'/login_admin' : require "view/admin/login.php"; break;
             case $me.'/login_user' : require "view/users/login.php"; break;
+            case $me.'/functionLogin' : require "controller/LoginController.php"; break;
+            case $me.'/logout' : require "controller/LogoutController.php"; break;
 
             // Rizkan
             case $me.'/ktp' : require "view/ktp.php"; break;
