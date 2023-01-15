@@ -4,7 +4,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <!-- Panggil Tag <head> -->
-<?php include('view/layout/head.php');?> 
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beranda | Kelurahan</title>
+    
+    <?php include('view/layout/head.php'); ?>
+    
+</head>
 <body>
     <div id="content" class="" style="overflow-y: none !important;">
         <!-- Navbar -->
@@ -27,7 +35,7 @@
             </div>
         </div>
         <!-- End Content -->
-        
+
     </div>
     
     <!-- Script Src / Footer -->
