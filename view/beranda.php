@@ -32,7 +32,9 @@
                 <img src="../assets/img/logoKel.png" width="40" alt="">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon">
+                <i class="fa-solid fa-bars"></i>
+                </span>
             </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav d-flex w-100 justify-content-center">
@@ -59,7 +61,7 @@
                         </li>
                     </ul>
                     <li class="nav-item position-relative ps-2 bg-primary rounded" style="list-style: none;">
-                            <a href="<?= $main_url ?>index.php/datang" class="nav-link text-center" style="text-decoration: none;">LOGOUT</a>
+                            <a href="" class="nav-link text-center" style="text-decoration: none;">LOGOUT</a>
                     </li>
                 </div>
             </div>
