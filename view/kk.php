@@ -10,17 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Beranda | Kelurahan</title>
 
-  <!-- Bootstrap -->
-  <link rel="stylesheet" href="<?php echo $main_url?>assets/style/bootstrap/css/bootstrap.min.css">
-  <link rel="stylesheet" href="<?php echo $main_url?>assets/style/bootstrap/css/bootstrap.css">
-  
-  <!-- MyStyle -->
-  <link rel="stylesheet" href="<?php echo $main_url?>assets/style/style.css">
-
-  <!-- Fontawesome -->
-  <link rel="stylesheet" href="<?php echo $main_url?>assets/style/fontawesome.css">
-  <link rel="stylesheet" href="<?php echo $main_url?>assets/style/fontawesome.min.css">
-  <link rel="stylesheet" href="<?php echo $main_url?>assets/style/style.css">
+    <?php include('view/layout/head.php'); ?>
 
 </head>
 <body>
