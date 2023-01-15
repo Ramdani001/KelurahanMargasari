@@ -1,3 +1,8 @@
+<?php 
+    $_SESSION["isFailed"] = false;
+    $dataLogin = $_SESSION["dataLogin"];
+?>  
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -58,9 +63,15 @@
                             <a href="<?= $main_url ?>index.php/datang" class="nav-link">DATANG</a>
                         </li>
                     </ul>
-                    <li class="nav-item position-relative ps-2 bg-primary rounded" style="list-style: none;">
-                            <a href="<?= $main_url ?>index.php/datang" class="nav-link text-center" style="text-decoration: none;">LOGOUT</a>
-                    </li>
+                    <?php if($dataLogin == null){?>
+                        <li class="nav-item position-relative ps-2 bg-primary rounded" style="list-style: none;">
+                            <a href="<?= $main_url ?>index.php/login_user" class="nav-link text-center" style="text-decoration: none;">Login</a>
+                        </li>
+                    <?php }else{?>
+                        <li class="nav-item position-relative ps-2 bg-primary rounded" style="list-style: none;">
+                                <a href="<?= $main_url ?>index.php/logout" class="nav-link text-center" style="text-decoration: none;">Logout</a>
+                        </li>
+                    <?php }?>
                 </div>
             </div>
         </nav>

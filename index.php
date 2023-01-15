@@ -1,4 +1,4 @@
-<?php error_reporting(0);
+<?php error_reporting(1);
     
     include "config/database.php";
     include "config/config.php";
@@ -24,6 +24,7 @@
             case $me.'/login_admin' : require "view/admin/login.php"; break;
             case $me.'/login_user' : require "view/users/login.php"; break;
             case $me.'/functionLogin' : require "controller/LoginController.php"; break;
+            case $me.'/logout' : require "controller/LogoutController.php"; break;
 
             // Rizkan
             case $me.'/ktp' : require "view/ktp.php"; break;

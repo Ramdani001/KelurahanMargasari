@@ -1,3 +1,9 @@
+<?php 
+    if($_SESSION["dataLogin"]!=null){
+        header("Location: beranda");
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,25 +34,32 @@
                     <h3>Kelurahan</h3>
                 </div>
                 <div class="card-body">
-                    <form action="" method="post">
+                    <form action="<?=$main_url?>index.php/functionLogin" method="post">
+                        <?php if($_SESSION["isFailed"]){?>
                         <div class="input-group flex-nowrap mb-3">
                             <span class="input-group-text" id="addon-wrapping">
-                                <i class="fa-solid fa-user"></i>
+                                <i class="fa-solid fa-close"></i>
+                            </span> <font color="red">&nbsp;NIK / Password Tidak terdaftar</font>
+                        </div>
+                        <?php } ?>
+                        <div class="input-group flex-nowrap mb-3">
+                            <span class="input-group-text" id="addon-wrapping">
+                                <i class="fa-solid fa-user"> </i>
                             </span>
-                            <input type="text" class="form-control" placeholder="NIK" aria-label="nik" aria-describedby="addon-wrapping">
+                            <input type="text" class="form-control" placeholder="NIK" aria-label="nik" aria-describedby="addon-wrapping" name="nik">
                         </div>
                         <div class="input-group flex-nowrap mb-3">
                             <span class="input-group-text" id="addon-wrapping">
                                 <i class="fa-solid fa-lock"></i>
                             </span>
-                            <input type="text" class="form-control" placeholder="Password" aria-label="password" aria-describedby="addon-wrapping" name="password">
+                            <input type="password" class="form-control" placeholder="Password" aria-label="password" aria-describedby="addon-wrapping" name="password">
                         </div>
                         <div class="">
-                            <button type="submit" class="btn btn-primary mb-2" class="" style="padding-left: 30px; padding-right: 30px;">
+                            <button type="submit" class="btn btn-primary mb-2" class="" style="padding-left: 30px; padding-right: 30px;" name="submit">
                                 Login
                             </button>
                             <button type="button" class="btn btn-secondary mb-2" class="" style="padding-left: 30px; padding-right: 30px;">
-                                <a href="<?php echo $main_url?>index." class="text-decoration-none text-white">
+                                <a href="<?php echo $main_url?>index.php/" class="text-decoration-none text-white">
                                     Batal
                                 </a>
                             </button>
