@@ -10,8 +10,8 @@
     </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav d-flex w-100 justify-content-center">
-                <li class="nav-item active">
-                    <a class="nav-link " aria-current="page" href="#">Home</a>
+                <li class="nav-item">
+                    <a class="nav-link " aria-current="page" href="<?= $main_url ?>index.php/">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="<?= $main_url ?>index.php/ktp">KTP</a>
