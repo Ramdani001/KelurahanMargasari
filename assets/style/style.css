@@ -13,7 +13,17 @@
     #hero .header{
         padding-top: 170px !important;
     }
+
+    #contentTable table{
+     width: 100% !important;
+     overflow-x: scroll;
+    }
+
 }
+
+html, body {
+    height: 100%;
+  }
 
 .navbar a{
     color: white !important;
@@ -23,8 +33,7 @@
 
 .active, .active a{
     transform: scale(1.2);
-    /* color: rgb(190, 228, 253)!important; */
-    color: red !important;
+    color: rgb(190, 228, 253)!important;
     text-decoration: underline;
 }
 
@@ -35,7 +44,7 @@
 }
 
 #content {
-    height: 88.1vh;
+    height: 100%;
     background-size: cover;
     background-position: left;
     background-repeat: no-repeat;

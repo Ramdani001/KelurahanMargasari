@@ -13,6 +13,9 @@
   <!-- MyStyle -->
   <link rel="stylesheet" href="<?php echo $main_url?>assets/style/style.css">
 
+  <!-- DataTables -->
+  <link rel="stylesheet" type="text/css" href="<?= $main_url?>assets/style/dataTables/jquerydataTables.min.css">
+
   <!-- Fontawesome -->
   <link rel="stylesheet" href="<?php echo $main_url?>assets/style/fontawesome.css">
   <link rel="stylesheet" href="<?php echo $main_url?>assets/style/fontawesome.min.css">
@@ -21,7 +24,7 @@
 </head>
 <body>
 
-    <div class="" style="overflow-y: none !important;">
+    <div id="content" class="" style="overflow-y: none !important;">
     <!-- Navbar -->
         <nav class="navbar navbar-expand-lg bg-secondary position-relative shadow">
             <div class="container-fluid">
@@ -31,37 +34,39 @@
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav d-flex w-100 justify-content-center">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav d-flex w-100 justify-content-center">
+                        <li class="nav-item active">
+                            <a class="nav-link " aria-current="page" href="#">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="<?= $main_url ?>index.php/ktp">KTP</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="<?= $main_url ?>index.php/kk">KK</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="<?= $main_url ?>index.php/kelahiran" class="nav-link">KELAHIRAN</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="<?= $main_url ?>index.php/kematian" class="nav-link">KEMATIAN</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="<?= $main_url ?>index.php/pindah" class="nav-link">PINDAH</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="<?= $main_url ?>index.php/datang" class="nav-link">DATANG</a>
+                        </li>
+                    </ul>
+                    <li class="nav-item position-relative ps-2 bg-primary rounded" style="list-style: none;">
+                            <a href="<?= $main_url ?>index.php/datang" class="nav-link text-center" style="text-decoration: none;">LOGOUT</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?= $main_url ?>index.php/ktp">KTP</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?= $main_url ?>index.php/kk">KK</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="<?= $main_url ?>index.php/kelahiran" class="nav-link">KELAHIRAN</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="<?= $main_url ?>index.php/kematian" class="nav-link">KEMATIAN</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">PINDAH</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">DATANG</a>
-                    </li>
-                </ul>
-            </div>
+                </div>
             </div>
         </nav>
     <!-- End Navbar -->
 
-    <!-- content -->
-        <div id="content" class="container-fluid">
+        <div class="container-fluid" style="position: fixed; top: 20%;">
             <div class="header text-center mx-auto w-100 pt-2">
                 <div class="card w-75 mx-auto  shadow-lg">
                     <div class="card-header">
@@ -76,7 +81,6 @@
 
             </div>
         </div>
-    <!-- End content -->
     
 </div>
 
