@@ -1,7 +1,6 @@
 <?php error_reporting(1);
     
     include "config/database.php";
-    include "config/config.php";
     include "config/session.php";
     
     // BASE URL SESUAIKAN DENGAN LINK / HOST MASING - MASING, TERMASUK PROJECT LOCATION NYA JUGA
