@@ -46,7 +46,7 @@
                             <span class="input-group-text" id="addon-wrapping">
                                 <i class="fa-solid fa-user"> </i>
                             </span>
-                            <input type="text" class="form-control" placeholder="NIK" aria-label="nik" aria-describedby="addon-wrapping" name="nik">
+                            <input type="text" class="form-control" placeholder="NIK / Username" aria-label="nik" aria-describedby="addon-wrapping" name="nik">
                         </div>
                         <div class="input-group flex-nowrap mb-3">
                             <span class="input-group-text" id="addon-wrapping">

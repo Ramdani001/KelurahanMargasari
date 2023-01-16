@@ -1,5 +1,11 @@
 <!-- Wajib Panggil / Buat Controller -->
-<?php include('controller/KtpController.php'); ?>  
+<?php 
+    include('controller/KtpController.php'); 
+    // Tambahkan Kondisi ini jika user belum login maka tidak bisa ke halaman ini
+    if($_SESSION["dataLogin"] == null){
+        header("Location: login_user");
+    }
+?>  
 
 <!DOCTYPE html>
 <html lang="en">
@@ -41,7 +47,7 @@
                             <div class="form-floating mb-3">
                                 <select name="nik" id="nik" class="form-control">
                                     <?php for($i = 0; $i<count($nikData); $i++){?>
-                                    <option class="optStatus" value="<?=$nikData[$i]["nik"]?>"><?=$nikData[$i]["nik"]?></option>
+                                    <option class="optStatus" value="<?=$nikData[$i]["nik"]?>"><?=$nikData[$i]["nik"]?> - <?=$nikData[$i]["namaLengkap"]?></option>
                                     <?php }?>
                                 </select>
                                 <label for="floatingInput">
@@ -291,6 +297,7 @@
            $("#staticBackdrop").modal('toggle');
        }
 
+       <?php if($dataLogin["levelUser"] == "admin"){?>
        function showModalStatus(value){
            var value =  JSON.parse(atob(value))
            $("#idStatus").val(value.id);
@@ -325,6 +332,8 @@
         function closeModalStatus(){
             $("#changeStatusModal").modal('toggle');
         }
+        <?php }?>
+
     </script>
     <!-- End Custom Script  -->
     

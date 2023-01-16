@@ -61,14 +61,8 @@
         VALUES ('$nik','$jenisPelayanan','$tanggal','$keterangan','$createdBy','$createdAt','$noPelayanan','$status')";
 
         mysqli_query($conn, $query);
-
-        $checkStatus = mysqli_affected_rows($conn);
+        echo 200;
         
-        if($checkStatus == 1){
-            echo 200;
-        }else{
-            echo 400;
-        }
     }
 
     // Fungsi Read Data Table
@@ -90,7 +84,7 @@
         $where = "";
 
         if($dataLogin["levelUser"] == "user"){
-            $where = "WHERE createdBy = ".$dataLogin["id"];
+            $where = "WHERE nik = ".$dataLogin["nik"];
         }
 
         $querycount = mysqli_query($conn, "SELECT count(id) as jumlah FROM pelayananktp ".$where);
@@ -145,7 +139,16 @@
                 $nestedData['nik'] = $r['nik'];
                 $nestedData['jenisPelayanan'] = $r['jenisPelayanan'];
                 $nestedData['keterangan'] = $r['keterangan'];
-                $nestedData['status'] = $r['status'];
+                
+                if($r["status"] == "Diajukan"){
+                    $nestedData['status'] = "<button class='btn btn-sm btn-primary'> <i class='fa-solid fa-clock' style='color: white;'></i> Diajukan&nbsp; </button> ";
+                }else if($r["status"] == "Diproses"){
+                    $nestedData['status'] = "<button class='btn btn-sm btn-warning'> <i class='fa-solid fa-clock' style='color: white;'></i> Diproses </button> ";
+                }else if($r["status"] == "Disetujui"){
+                    $nestedData['status'] = "<button class='btn btn-sm btn-success'> <i class='fa-solid fa-check' style='color: white;'></i> Disetujui </button> ";
+                }else if($r["status"] == "Ditolak"){
+                    $nestedData['status'] = "<button class='btn btn-sm btn-danger'> <i class='fa-solid fa-close' style='color: white;'></i> &nbsp;&nbsp; Ditolak &nbsp; </button> ";
+                }
                 
                 $aksi = "";
                 // Enskripsi Data Agar Tidak Error Saat Fetch Data ke javascript
@@ -153,17 +156,22 @@
                 //Tambahkan Button Aksi
                 if($dataLogin["levelUser"] == "admin"){
                     if($r["status"] == "Diajukan"){
-                        $aksi .= "<button onclick=showModalStatus('".$encryptParse."') class='btn btn-sm btn-primary'> <i class='fa-solid fa-clock' style='color: white;'></i> Status </button> ";
+                        $aksi .= "<button onclick=showModalStatus('".$encryptParse."') class='btn btn-sm btn-primary'> status </button> ";
                     }else if($r["status"] == "Diproses"){
-                        $aksi .= "<button onclick=showModalStatus('".$encryptParse."') class='btn btn-sm btn-warning'> <i class='fa-solid fa-clock' style='color: white;'></i> Status </button> ";
+                        $aksi .= "<button onclick=showModalStatus('".$encryptParse."') class='btn btn-sm btn-primary'> status </button> ";
                     }else if($r["status"] == "Disetujui"){
-                        $aksi .= "<button onclick=showModalStatus('".$encryptParse."') class='btn btn-sm btn-success'> <i class='fa-solid fa-check' style='color: white;'></i> Status </button> ";
+                        $aksi .= "<button onclick=showModalStatus('".$encryptParse."') class='btn btn-sm btn-primary'> status </button> ";
                     }else if($r["status"] == "Ditolak"){
-                        $aksi .= "<button onclick=showModalStatus('".$encryptParse."') class='btn btn-sm btn-danger'> <i class='fa-solid fa-close' style='color: white;'></i> Status </button> ";
+                        $aksi .= "<button onclick=showModalStatus('".$encryptParse."') class='btn btn-sm btn-primary'> status </button> ";
                     }
                 }
-                $aksi .= "<button onclick=editData('".$encryptParse."') class='btn btn-sm btn-light'> <i class='fa-solid fa-pen' style='color: green;'></i></button> ";
-                $aksi .= "<button onclick=deleteData(".$r["id"].") class='btn btn-sm btn-light'> <i class='fa-solid fa-trash' style='color: red;'></i></button>";
+
+                if($r["status"] == "Diajukan"){
+                    $aksi .= "<button onclick=editData('".$encryptParse."') class='btn btn-sm btn-success'> <i class='fa-solid fa-pen' style='color: white;'></i></button> ";
+                    $aksi .= "<button onclick=deleteData(".$r["id"].") class='btn btn-sm btn-danger'> <i class='fa-solid fa-trash' style='color: white;'></i></button>";
+                }else if($r["status"] == "Ditolak"){
+                    $aksi .= "<button onclick=editData('".$encryptParse."') class='btn btn-sm btn-success'> <i class='fa-solid fa-pen' style='color: white;'></i></button> ";
+                }
 
                 $nestedData['aksi'] = $aksi;
                 
@@ -200,54 +208,30 @@
             nik = '$nik',
             jenisPelayanan = '$jenisPelayanan',
             tanggal = '$tanggal',
-            keterangan = '$keterangan'
+            keterangan = '$keterangan',
+            `status` = 'Diajukan'
             WHERE id = '$id'
         ";
-
         mysqli_query($conn, $query);
-
-        $checkStatus = mysqli_affected_rows($conn);
-        
-        if($checkStatus == 1){
-            echo 200;
-        }else{
-            echo 400;
-        }
+        echo 200;
     }
 
      // Fungsi Delete
     function hapusData($conn) {
         $id = $_POST["id"];
         $query = "DELETE FROM pelayananktp WHERE id = $id";
-
         mysqli_query($conn, $query);
-
-        $checkStatus = mysqli_affected_rows($conn);
-
-        if($checkStatus == 1){
-            echo 200;
-        }else{
-            echo 400;
-        }
+        echo 200;
     }
 
     // Fungsi Ganti Status
     function gantiStatus($conn) {
-        // Parsing Semua Variable
         $id = $_POST["id"];
         $status = $_POST["status"];
-        // Masukan Kedalam Query
         $query = "UPDATE pelayananktp SET `status` = '$status' WHERE id = '$id'";
-
         mysqli_query($conn, $query);
-
-        $checkStatus = mysqli_affected_rows($conn);
+        echo 200;
         
-        if($checkStatus == 1){
-            echo 200;
-        }else{
-            echo 400;
-        }
     }
 
 ?>
