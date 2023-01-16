@@ -2,29 +2,32 @@
     $_SESSION["isFailed"] = false;
     $dataLogin = $_SESSION["dataLogin"];
 
-    // Inisialisasi Variable
-    $noPelayananGenerate = "-";
-    // End Inisialisasi Variable
-
-    // Generate Kode Atau No Pelayanan
-    $query = mysqli_query($conn, "SELECT * FROM pelayananktp ORDER BY id DESC LIMIT 1");
-    $row = mysqli_fetch_assoc($query);
-    if($row == null){
-        $noPelayananGenerate = "1 KTP/".date("Y");
-    }else{
-        $noPelayananGenerate = ($row["id"]+1)." KTP/".date("Y");
-    }
-
     // Cek Apakah Ada Request Pemanggilan Fungsi CRUD ?
     // Wajib Tambahkan Parameter $conn untuk memasukan koneksi database ke function
     if(isset($_POST["function"])){
         switch($_POST["function"]){
+            case "getKode": getKode($conn); break;
             case "create": tambahData($conn); break;
             case "readDataTable": readDataTable($conn); break;
             case "update": ubahData($conn); break;
             case "delete": hapusData($conn); break;
             case "gantiStatus": gantiStatus($conn); break;
         }
+    }
+
+    function getKode($conn){
+        $noPelayananGenerate = "-";
+
+        // Generate Kode Atau No Pelayanan
+        $query = mysqli_query($conn, "SELECT * FROM pelayananktp ORDER BY id DESC LIMIT 1");
+        $row = mysqli_fetch_assoc($query);
+        if($row == null){
+            $noPelayananGenerate = "1 KTP/".date("Y");
+        }else{
+            $noPelayananGenerate = ($row["id"]+1)." KTP/".date("Y");
+        }
+
+        echo $noPelayananGenerate;
     }
 
     // Fungsi Create
@@ -110,7 +113,7 @@
 
             $datacount = $querycount->fetch_array();
             $totalFiltered = $datacount['jumlah'];
-            
+
         }
         
         $data = array();
@@ -124,8 +127,15 @@
                 $nestedData['jenisPelayanan'] = $r['jenisPelayanan'];
                 $nestedData['keterangan'] = $r['keterangan'];
                 $nestedData['status'] = $r['status'];
+                
+                $aksi = "";
+                // Enskripsi Data Agar Tidak Error Saat Fetch Data ke javascript
+                $encryptParse = base64_encode(json_encode($r));
+                //Tambahkan Button Aksi
+                $aksi .= "<button onclick=editData('".$encryptParse."') class='btn btn-sm btn-light'> <i class='fa-solid fa-pen' style='color: green;'></i></button> ";
+                $aksi .= "<button onclick=deleteData(".$r["id"].") class='btn btn-sm btn-light'> <i class='fa-solid fa-trash' style='color: red;'></i></button>";
 
-                $nestedData['aksi'] = "<button class='btn btn-sm btn-warning'> Ubah</button> <button onclick='deleteData(".$r["id"].")' class='btn btn-sm btn-danger'> Hapus</a>";
+                $nestedData['aksi'] = $aksi;
                 
                 $data[] = $nestedData;
                 $no++;
@@ -144,7 +154,29 @@
 
      // Fungsi Update
     function ubahData($conn) {
-        echo "Hello world!";
+        // Parsing Semua Variable
+        $id = $_POST["id"];
+        $jenisPelayanan = $_POST["jenisPelayanan"];
+        $tanggal = $_POST["tanggal"];
+        $keterangan = $_POST["keterangan"];
+        
+        // Masukan Kedalam Query
+        $query = "UPDATE pelayananktp SET
+            jenisPelayanan = '$jenisPelayanan',
+            tanggal = '$tanggal',
+            keterangan = '$keterangan'
+            WHERE id = '$id'
+        ";
+
+        mysqli_query($conn, $query);
+
+        $checkStatus = mysqli_affected_rows($conn);
+        
+        if($checkStatus == 1){
+            echo 200;
+        }else{
+            echo 400;
+        }
     }
 
      // Fungsi Delete

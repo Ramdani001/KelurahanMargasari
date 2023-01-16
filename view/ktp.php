@@ -31,7 +31,8 @@
                     <div class="modal-body">
                         <form action="" method="post">
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="noPelayanan"  name="noPelayanan" readonly value="<?=$noPelayananGenerate?>">
+                                <input type="hidden" class="form-control" id="id"  name="id" readonly value="">
+                                <input type="text" class="form-control" id="noPelayanan"  name="noPelayanan" readonly value="">
                                 <label for="floatingInput">
                                     No Pelayanan
                                 </label>
@@ -100,7 +101,7 @@
     <!-- End Script Src / Footer -->
     <!-- Custom Script Disini -->
     <script>
-        
+
         var table;
 
         $(function(){
@@ -129,74 +130,109 @@
 
         function showModal(){
             clearData();
+            $.ajax({
+                url:"<?=$main_url;?>index.php/functionKtp",
+                method:"POST",
+                data:{function : "getKode"},
+                success:function(response) {
+                    $("#noPelayanan").val(response)
+                },
+                error:function(){
+                    alert("Terjadi Kesalahan");
+                }
+            });
             $("#staticBackdrop").modal('toggle');
         }
 
         function clearData(){
+           $("#id").val("");
            $("#jenisPelayanan").val("");
            $("#tanggal").val("");
            $("#keterangan").val("");
        }
-
-        function submitData(){
-            // Inisialisasi Variable & Ambil data dari id text input
-            var noPelayanan = $("#noPelayanan").val();
-            var jenisPelayanan = $("#jenisPelayanan").val();
-            var keterangan = $("#keterangan").val();
-            var tanggal = $("#tanggal").val();
-
-            // Validasi 
-            if(jenisPelayanan == "" || tanggal == "" || keterangan == ""){
-                return alert("Beberapa Form Belum Lengkap");
-            }else{
-                // Post Data Dengan Ajax
-                $.ajax({
-                    url:"<?=$main_url;?>index.php/functionKtp",
-                    method:"POST",
-                    data:{
-                        // function diantaranya : create, update, delete, dll... sesuaikan dengan kebutuhan
-                        function : "create",
-                        // Opsional Data yg akan di post
-                        noPelayanan : noPelayanan,
-                        jenisPelayanan : jenisPelayanan,
-                        keterangan : keterangan,
-                        tanggal : tanggal
-                    },
-                    success:function(response) {
-                        // Kalo Sukses
-                        if(response == 200){
-                            alert("Success Menambahkan Data");
-                            $("#staticBackdrop").modal('toggle');
-                            clearData();
-                            table.ajax.reload(null, false);
-                        }
-                    },
-                    error:function(){
-                        // Kalo Gagal
-                        alert("Terjadi Kesalahan");
-                    }
-                });
-            }
-        }
-
-        function deleteData(id){
-            $.ajax({
-                    url:"<?=$main_url;?>index.php/functionKtp",
-                    method:"POST",
-                    data:{function : "delete",id : id},
-                    success:function(response) {
-                        if(response == 200){
-                            alert("Success Menghapus Data");
-                            table.ajax.reload(null, false);
-                        }
-                    },
-                    error:function(){
-                        alert("Terjadi Kesalahan");
-                    }
-                });
-        }
-
        
+       function submitData(){
+           // Inisialisasi Variable & Ambil data dari id text input
+           var id = $("#id").val();
+           var noPelayanan = $("#noPelayanan").val();
+           var jenisPelayanan = $("#jenisPelayanan").val();
+           var keterangan = $("#keterangan").val();
+           var tanggal = $("#tanggal").val();
+
+           
+           // Validasi 
+           if(jenisPelayanan == "" || tanggal == "" || keterangan == ""){
+               return alert("Beberapa Form Belum Lengkap");
+            }else{
+               // function diantaranya : create, update, delete, dll... sesuaikan dengan kebutuhan
+               var functionControl = "create";
+               if(id != ""){
+                    functionControl = "update";
+               }
+               console.log(functionControl);
+               // Post Data Dengan Ajax
+               $.ajax({
+                   url:"<?=$main_url;?>index.php/functionKtp",
+                   method:"POST",
+                   data:{
+                       function : functionControl,
+                       // Opsional Data yg akan di post
+                       id: id,
+                       noPelayanan : noPelayanan,
+                       jenisPelayanan : jenisPelayanan,
+                       keterangan : keterangan,
+                       tanggal : tanggal
+                   },
+                   success:function(response) {
+                       // Kalo Sukses
+                       if(response == 200){
+                           alert("Success "+functionControl+" Data");
+                           $("#staticBackdrop").modal('toggle');
+                           clearData();
+                           table.ajax.reload(null, false);
+                       }
+                   },
+                   error:function(){
+                       // Kalo Gagal
+                       alert("Terjadi Kesalahan");
+                   }
+               });
+           }
+       }
+       
+       function deleteData(id){
+           $.ajax({
+               url:"<?=$main_url;?>index.php/functionKtp",
+               method:"POST",
+               data:{function : "delete",id : id},
+               success:function(response) {
+                   if(response == 200){
+                       alert("Success Menghapus Data");
+                       table.ajax.reload(null, false);
+                   }
+               },
+               error:function(){
+                   alert("Terjadi Kesalahan");
+               }
+           });
+       }
+       
+       function editData(value){
+           // Decrypt hasil value lalu dijaidkan json
+           var value =  JSON.parse(atob(value))
+           console.log(value);
+
+           // Masukan Semua Data Ke Masing - Maing Text Field
+           $("#id").val(value.id);
+           $("#noPelayanan").val(value.noPelayanan);
+           $("#jenisPelayanan").val(value.jenisPelayanan);
+           $("#tanggal").val(value.tanggal);
+           $("#keterangan").val(value.keterangan);
+
+           // Munculkan Modal
+           $("#staticBackdrop").modal('toggle');
+       }
+
     </script>
     <!-- End Custom Script  -->
     
