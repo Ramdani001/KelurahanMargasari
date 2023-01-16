@@ -1,7 +1,7 @@
 <?php
     $_SESSION["isFailed"] = false;
     $dataLogin = $_SESSION["dataLogin"];
-
+  
     // Cek Apakah Ada Request Pemanggilan Fungsi CRUD ?
     // Wajib Tambahkan Parameter $conn untuk memasukan koneksi database ke function
     if(isset($_POST["function"])){
@@ -13,6 +13,13 @@
             case "delete": hapusData($conn); break;
             case "gantiStatus": gantiStatus($conn); break;
         }
+    }
+    
+    // Get Data Nik
+    $queryNik = mysqli_query($conn, "SELECT * FROM userPenduduk WHERE levelUser = 'user' ORDER BY id ");
+    $nikData = [];
+    while ( $row = mysqli_fetch_assoc($queryNik) ){
+        $nikData[] = $row;
     }
 
     function getKode($conn){
@@ -37,6 +44,9 @@
         
         // Parsing Semua Variable
         $nik = $dataLogin["nik"];
+        if($dataLogin["levelUser"] == "admin"){
+            $nik = $_POST["nik"];
+        }
         $jenisPelayanan = $_POST["jenisPelayanan"];
         $tanggal = $_POST["tanggal"];
         $keterangan = $_POST["keterangan"];
@@ -141,6 +151,17 @@
                 // Enskripsi Data Agar Tidak Error Saat Fetch Data ke javascript
                 $encryptParse = base64_encode(json_encode($r));
                 //Tambahkan Button Aksi
+                if($dataLogin["levelUser"] == "admin"){
+                    if($r["status"] == "Diajukan"){
+                        $aksi .= "<button onclick=showModalStatus('".$encryptParse."') class='btn btn-sm btn-primary'> <i class='fa-solid fa-clock' style='color: white;'></i> Status </button> ";
+                    }else if($r["status"] == "Diproses"){
+                        $aksi .= "<button onclick=showModalStatus('".$encryptParse."') class='btn btn-sm btn-warning'> <i class='fa-solid fa-clock' style='color: white;'></i> Status </button> ";
+                    }else if($r["status"] == "Disetujui"){
+                        $aksi .= "<button onclick=showModalStatus('".$encryptParse."') class='btn btn-sm btn-success'> <i class='fa-solid fa-check' style='color: white;'></i> Status </button> ";
+                    }else if($r["status"] == "Ditolak"){
+                        $aksi .= "<button onclick=showModalStatus('".$encryptParse."') class='btn btn-sm btn-danger'> <i class='fa-solid fa-close' style='color: white;'></i> Status </button> ";
+                    }
+                }
                 $aksi .= "<button onclick=editData('".$encryptParse."') class='btn btn-sm btn-light'> <i class='fa-solid fa-pen' style='color: green;'></i></button> ";
                 $aksi .= "<button onclick=deleteData(".$r["id"].") class='btn btn-sm btn-light'> <i class='fa-solid fa-trash' style='color: red;'></i></button>";
 
@@ -163,14 +184,20 @@
 
      // Fungsi Update
     function ubahData($conn) {
+        $dataLogin = $_SESSION["dataLogin"];
         // Parsing Semua Variable
         $id = $_POST["id"];
         $jenisPelayanan = $_POST["jenisPelayanan"];
         $tanggal = $_POST["tanggal"];
         $keterangan = $_POST["keterangan"];
+        $nik = $dataLogin["nik"];
+        if($dataLogin["levelUser"] == "admin"){
+            $nik = $_POST["nik"];
+        }
         
         // Masukan Kedalam Query
         $query = "UPDATE pelayananktp SET
+            nik = '$nik',
             jenisPelayanan = '$jenisPelayanan',
             tanggal = '$tanggal',
             keterangan = '$keterangan'
@@ -206,7 +233,21 @@
 
     // Fungsi Ganti Status
     function gantiStatus($conn) {
-        echo "Hello world!";
+        // Parsing Semua Variable
+        $id = $_POST["id"];
+        $status = $_POST["status"];
+        // Masukan Kedalam Query
+        $query = "UPDATE pelayananktp SET `status` = '$status' WHERE id = '$id'";
+
+        mysqli_query($conn, $query);
+
+        $checkStatus = mysqli_affected_rows($conn);
+        
+        if($checkStatus == 1){
+            echo 200;
+        }else{
+            echo 400;
+        }
     }
 
 ?>

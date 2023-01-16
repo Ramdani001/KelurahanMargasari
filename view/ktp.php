@@ -37,6 +37,18 @@
                                     No Pelayanan
                                 </label>
                             </div>
+                            <?php if($dataLogin["levelUser"] == "admin"){?>
+                            <div class="form-floating mb-3">
+                                <select name="nik" id="nik" class="form-control">
+                                    <?php for($i = 0; $i<count($nikData); $i++){?>
+                                    <option class="optStatus" value="<?=$nikData[$i]["nik"]?>"><?=$nikData[$i]["nik"]?></option>
+                                    <?php }?>
+                                </select>
+                                <label for="floatingInput">
+                                    NIK
+                                </label>
+                            </div>  
+                            <?php }?>
                             <div class="form-floating mb-3">
                                 <input type="text" class="form-control" id="jenisPelayanan" placeholder="Jenis Pelayanan" name="jenisPelayanan">
                                 <label for="floatingInput">
@@ -62,6 +74,43 @@
                 </div>
             </div>
         </div>
+        <!-- Modal Ganti Status -->
+        <div class="modal fade" id="changeStatusModal" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Update Status Pengajuan</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="" method="post">
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="noStatus" name="noStatus" readonly>
+                                <label for="floatingInput">
+                                    No Pelayanan
+                                </label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="hidden" class="form-control" id="idStatus"  name="idStatus" readonly value="">
+                                <label for="floatingInput">
+                                    Status
+                                </label>
+                                <select name="statusPelayanan" id="statusPelayanan" class="form-control">
+                                    <option class="optStatus" value="Diajukan">Diajukan</option>
+                                    <option class="optStatus" value="Diproses">Diproses</option>
+                                    <option class="optStatus" value="Disetujui">Disetujui</option>
+                                    <option class="optStatus" value="Ditolak">Ditolak</option>
+                                </select>
+                            </div>      
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" onclick="closeModalStatus()" class="btn btn-danger" data-bs-dismiss="modal">Batal</button>
+                        <button type="submit" name="submit" onclick="submitStatus()" class="btn btn-primary">Update</button>
+                    </div>
+                </div>
+            </div>
+        </div>
         <!-- End Modal -->
         <!-- Table -->
         <div class="container-fluid mt-5" style="position: fixed; top: 20%;">
@@ -74,7 +123,7 @@
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>No Pelayan</th>
+                            <th>No Pelayanan</th>
                             <th>Tanggal Pengajuan</th>
                             <th>NIK</th>
                             <th>Jenis Pelayanan</th>
@@ -158,6 +207,9 @@
            var jenisPelayanan = $("#jenisPelayanan").val();
            var keterangan = $("#keterangan").val();
            var tanggal = $("#tanggal").val();
+           var nik = $("#nik").val();
+
+           console.log(nik);
 
            // Validasi 
            if(jenisPelayanan == "" || tanggal == "" || keterangan == ""){
@@ -177,6 +229,7 @@
                        function : functionControl,
                        // Opsional Data yg akan di post
                        id: id,
+                       nik: nik,
                        noPelayanan : noPelayanan,
                        jenisPelayanan : jenisPelayanan,
                        keterangan : keterangan,
@@ -228,10 +281,50 @@
            $("#tanggal").val(value.tanggal);
            $("#keterangan").val(value.keterangan);
 
+           <?php if($dataLogin["levelUser"] == "admin"){?>
+            $('#nik option').filter(function(){
+                return this.value == value.nik;
+            }).prop("selected", true)
+           <?php }?>
+
            // Munculkan Modal
            $("#staticBackdrop").modal('toggle');
        }
 
+       function showModalStatus(value){
+           var value =  JSON.parse(atob(value))
+           $("#idStatus").val(value.id);
+           $("#noStatus").val(value.noPelayanan);
+           $('#statusPelayanan option').filter(function(){
+            return this.value == value.status;
+           }).prop("selected", true)
+           $("#changeStatusModal").modal('toggle');
+        }
+
+        function submitStatus(){
+            var ids = $('#idStatus').val()
+            var sts = $('#statusPelayanan').val()
+            console.log(ids)
+            $.ajax({
+               url:"<?=$main_url;?>index.php/functionKtp",
+               method:"POST",
+               data:{function : "gantiStatus", id : ids, status: sts},
+               success:function(response) {
+                   if(response == 200){
+                       alert("Success Mengganti Status");
+                       $("#changeStatusModal").modal('toggle');
+                       table.ajax.reload(null, false);
+                   }
+               },
+               error:function(){
+                   alert("Terjadi Kesalahan");
+               }
+           });
+        }
+
+        function closeModalStatus(){
+            $("#changeStatusModal").modal('toggle');
+        }
     </script>
     <!-- End Custom Script  -->
     
