@@ -20,6 +20,7 @@
     if(isset($_POST["function"])){
         switch($_POST["function"]){
             case "create": tambahData($conn); break;
+            case "readDataTable": readDataTable($conn); break;
             case "update": ubahData($conn); break;
             case "delete": hapusData($conn); break;
             case "gantiStatus": gantiStatus($conn); break;
@@ -55,17 +56,111 @@
         }else{
             echo 400;
         }
+    }
+
+    // Fungsi Read Data Table
+    function readDataTable($conn){
+        $columns = array( 
+            0 =>'id', 
+            1 =>'nik',
+            2=> 'jenisPelayanan',
+            3=> 'tanggal',
+            4=> 'keterangan',
+            5=> 'createdBy',
+            6=> 'createdAt',
+            7=> 'noPelayanan',
+            8=> 'status',
+        );
         
+        $querycount = mysqli_query($conn, "SELECT count(id) as jumlah FROM pelayananktp");
+        $datacount = $querycount->fetch_array();
+        
+        $totalData = $datacount['jumlah'];
+        
+        $totalFiltered = $totalData; 
+        
+        $limit = $_POST['length'];
+        $start = $_POST['start'];
+        $order = $columns[$_POST['order']['0']['column']];
+        $dir = $_POST['order']['0']['dir'];
+        
+        if(empty($_POST['search']['value'])) {            
+            $query = mysqli_query($conn, "SELECT * FROM pelayananktp order by $order $dir LIMIT $limit OFFSET $start");
+        } else {
+            $search = $_POST['search']['value']; 
+            
+            $query = mysqli_query($conn, "SELECT * FROM pelayananktp 
+                WHERE noPelayanan LIKE '%$search%' 
+                or tanggal LIKE '%$search%' 
+                or nik LIKE '%$search%' 
+                or jenisPelayanan LIKE '%$search%' 
+                or keterangan LIKE '%$search%' 
+                or status LIKE '%$search%' 
+                order by $order $dir LIMIT $limit OFFSET $start"
+            );
+            
+            $querycount = mysqli_query($conn, "SELECT count(id) as jumlah FROM pelayananktp 
+                WHERE noPelayanan LIKE '%$search%' 
+                or tanggal LIKE '%$search%' 
+                or nik LIKE '%$search%' 
+                or jenisPelayanan LIKE '%$search%' 
+                or keterangan LIKE '%$search%' 
+                or status LIKE '%$search%'"
+            );
+
+            $datacount = $querycount->fetch_array();
+            $totalFiltered = $datacount['jumlah'];
+            
+        }
+        
+        $data = array();
+        if(!empty($query)){
+            $no = $start + 1;
+            while ($r = $query->fetch_array()){
+                $nestedData['no'] = $no;
+                $nestedData['noPelayanan'] = $r['noPelayanan'];
+                $nestedData['tanggal'] = $r['tanggal'];
+                $nestedData['nik'] = $r['nik'];
+                $nestedData['jenisPelayanan'] = $r['jenisPelayanan'];
+                $nestedData['keterangan'] = $r['keterangan'];
+                $nestedData['status'] = $r['status'];
+
+                $nestedData['aksi'] = "<button class='btn btn-sm btn-warning'> Ubah</button> <button onclick='deleteData(".$r["id"].")' class='btn btn-sm btn-danger'> Hapus</a>";
+                
+                $data[] = $nestedData;
+                $no++;
+            }
+        }
+        
+        $json_data = array(
+            "draw"            => intval($_POST['draw']),  
+            "recordsTotal"    => intval($totalData),  
+            "recordsFiltered" => intval($totalFiltered), 
+            "data"            => $data  
+        );
+        
+        echo json_encode($json_data); 
     }
 
      // Fungsi Update
-     function ubahData($conn) {
+    function ubahData($conn) {
         echo "Hello world!";
     }
 
      // Fungsi Delete
-     function hapusData($conn) {
-        echo "Hello world!";
+    function hapusData($conn) {
+        $id = $_POST["id"];
+        $query = "DELETE FROM pelayananktp WHERE id = $id";
+
+        mysqli_query($conn, $query);
+
+        $checkStatus = mysqli_affected_rows($conn);
+
+        if($checkStatus == 1){
+            echo 200;
+        }else{
+            echo 400;
+        }
     }
 
     // Fungsi Ganti Status

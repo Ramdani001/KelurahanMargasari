@@ -8,6 +8,11 @@
  <script src="<?php echo $main_url?>assets/style/js/fontawesome.all.min.js"></script>
  <script src="<?php echo $main_url?>assets/style/js/jquery-3.3.1.min.js"></script>
  <!-- Show Password -->
+
+ <!-- Data Table -->
+ <script src="<?php echo $main_url?>assets/style/dataTables/jquery.dataTables.min.js"></script>
+ <script src="<?php echo $main_url?>assets/style/dataTables/dataTables.bootstrap4.min.js"></script>
+
  
  <script>
     document.getElementById("show1").addEventListener("click", showPass1);

@@ -69,7 +69,7 @@
             Tambah
             </button>
             <div class="bg-light rounded mt-2 p-2"> 
-                <table class="table table-striped table-hover dtabel text-center">
+                <table class="table table-striped table-hover dtabel text-center" id="tableData" width="100%">
                     <thead>
                         <tr>
                             <th>No</th>
@@ -79,6 +79,7 @@
                             <th>Jenis Pelayanan</th>
                             <th>Keterangan</th>
                             <th>Status</th>
+                            <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody> 
@@ -99,10 +100,43 @@
     <!-- End Script Src / Footer -->
     <!-- Custom Script Disini -->
     <script>
+        
+        var table;
+
+        $(function(){
+            table = $('#tableData').DataTable({
+               "processing": true, "serverSide": true,
+               "ajax":{
+                   "url": "<?=$main_url;?>index.php/functionKtp",
+                   "data": function ( d ) {
+                       d.function = "readDataTable"
+                    },
+                    "dataType": "json",
+                    "type": "POST"
+                },
+                "columns": [
+                    { "data": "no" },
+                    { "data": "noPelayanan" },
+                    { "data": "tanggal" },
+                    { "data": "nik" },
+                    { "data": "jenisPelayanan" },
+                    { "data": "keterangan" },
+                    { "data": "status" },
+                    { "data": "aksi" },
+                ]       
+            });
+        });
+
         function showModal(){
             clearData();
             $("#staticBackdrop").modal('toggle');
         }
+
+        function clearData(){
+           $("#jenisPelayanan").val("");
+           $("#tanggal").val("");
+           $("#keterangan").val("");
+       }
 
         function submitData(){
             // Inisialisasi Variable & Ambil data dari id text input
@@ -134,6 +168,7 @@
                             alert("Success Menambahkan Data");
                             $("#staticBackdrop").modal('toggle');
                             clearData();
+                            table.ajax.reload(null, false);
                         }
                     },
                     error:function(){
@@ -144,11 +179,24 @@
             }
         }
 
-       function clearData(){
-           $("#jenisPelayanan").val("");
-           $("#tanggal").val("");
-           $("#keterangan").val("");
-       }
+        function deleteData(id){
+            $.ajax({
+                    url:"<?=$main_url;?>index.php/functionKtp",
+                    method:"POST",
+                    data:{function : "delete",id : id},
+                    success:function(response) {
+                        if(response == 200){
+                            alert("Success Menghapus Data");
+                            table.ajax.reload(null, false);
+                        }
+                    },
+                    error:function(){
+                        alert("Terjadi Kesalahan");
+                    }
+                });
+        }
+
+       
     </script>
     <!-- End Custom Script  -->
     
