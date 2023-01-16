@@ -19,22 +19,22 @@
                 </li>
                 <?php }?>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?= $main_url ?>index.php/ktp">KTP</a>
+                    <a class="nav-link" href="<?php if($dataLogin["levelUser"] == "admin" || $dataLogin["levelUser"] == "user"){?><?= $main_url ?>index.php/ktp<?php }else{?><?= $main_url ?>index.php/login_user<?php }?>"> KTP </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?= $main_url ?>index.php/kk">KK</a>
+                    <a class="nav-link" href="<?php if($dataLogin["levelUser"] == "admin" || $dataLogin["levelUser"] == "user"){?><?= $main_url ?>index.php/kk<?php }else{?><?= $main_url ?>index.php/login_user<?php }?>">KK</a>
                 </li>
                 <li class="nav-item">
-                    <a href="<?= $main_url ?>index.php/kelahiran" class="nav-link">KELAHIRAN</a>
+                    <a href="<?php if($dataLogin["levelUser"] == "admin" || $dataLogin["levelUser"] == "user"){?><?= $main_url ?>index.php/kelahiran<?php }else{?><?= $main_url ?>index.php/login_user<?php }?>" class="nav-link">KELAHIRAN</a>
                 </li>
                 <li class="nav-item">
-                    <a href="<?= $main_url ?>index.php/kematian" class="nav-link">KEMATIAN</a>
+                    <a href="<?php if($dataLogin["levelUser"] == "admin" || $dataLogin["levelUser"] == "user"){?><?= $main_url ?>index.php/kematian<?php }else{?><?= $main_url ?>index.php/login_user<?php }?>" class="nav-link">KEMATIAN</a>
                 </li>
                 <li class="nav-item">
-                    <a href="<?= $main_url ?>index.php/pindah" class="nav-link">PINDAH</a>
+                    <a href="<?php if($dataLogin["levelUser"] == "admin" || $dataLogin["levelUser"] == "user"){?><?= $main_url ?>index.php/pindah<?php }else{?><?= $main_url ?>index.php/login_user<?php }?>" class="nav-link">PINDAH</a>
                 </li>
                 <li class="nav-item">
-                    <a href="<?= $main_url ?>index.php/datang" class="nav-link">DATANG</a>
+                    <a href="<?php if($dataLogin["levelUser"] == "admin" || $dataLogin["levelUser"] == "user"){?><?= $main_url ?>index.php/datang<?php }else{?><?= $main_url ?>index.php/login_user<?php }?>" class="nav-link">DATANG</a>
                 </li>
             </ul>
             <?php if($dataLogin == null){?>
