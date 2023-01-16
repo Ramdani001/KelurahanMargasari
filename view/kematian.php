@@ -109,6 +109,7 @@
                     <th>Sebab</th>
                     <th>Pelapor</th>
                     <th>Status</th>
+                    <th>Aksi</th>
                 </tr>
             </thead>
             <tbody> 
@@ -123,6 +124,14 @@
                     <td>Sakit</td>
                     <td>Sulaiman</td>
                     <td>Di Proses</td>
+                    <td class="">
+                            <a href="#" clas="pe-3" style="font-size: 18px !important; padding-right: 10px;">
+                                <i class="fa-solid fa-pen" style="color: green;"></i>
+                            </a>
+                            <a href="#" class="ps-2" style="font-size: 18px !important;">
+                                <i class="fa-solid fa-trash" style="color: red;"></i>
+                            </a>
+                        </td>
                 </tr>
             </tbody>
         </table>

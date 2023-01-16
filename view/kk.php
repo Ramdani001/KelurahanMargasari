@@ -13,7 +13,7 @@
     <?php include('view/layout/head.php'); ?>
 
 </head>
-<body>
+<body> 
 
     <div id="content" class="" style="overflow-y: none !important;">
     <!-- Navbar -->
@@ -88,8 +88,9 @@
                         <th>Nama</th>
                         <th>Keterangan</th>
                         <th>Status</th>
+                        <th>Aksi</th>
                     </tr>
-                </thead>
+                </thead> 
                 <tbody> 
                     <tr>
                         <td>1</td>
@@ -99,6 +100,14 @@
                         <td>Ramdani</td>
                         <td>Pengajuran KK</td>
                         <td>Di Proses</td>
+                        <td class="">
+                            <a href="#" clas="pe-3" style="font-size: 18px !important; padding-right: 10px;">
+                                <i class="fa-solid fa-pen" style="color: green;"></i>
+                            </a>
+                            <a href="#" class="ps-2" style="font-size: 18px !important;">
+                                <i class="fa-solid fa-trash" style="color: red;"></i>
+                            </a>
+                        </td>
                     </tr>
                 </tbody>
             </table>
