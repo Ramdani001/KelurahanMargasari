@@ -63,6 +63,8 @@
 
     // Fungsi Read Data Table
     function readDataTable($conn){
+        $dataLogin = $_SESSION["dataLogin"];
+
         $columns = array( 
             0 =>'id', 
             1 =>'nik',
@@ -74,8 +76,14 @@
             7=> 'noPelayanan',
             8=> 'status',
         );
-        
-        $querycount = mysqli_query($conn, "SELECT count(id) as jumlah FROM pelayananktp");
+
+        $where = "";
+
+        if($dataLogin["levelUser"] == "user"){
+            $where = "WHERE createdBy = ".$dataLogin["id"];
+        }
+
+        $querycount = mysqli_query($conn, "SELECT count(id) as jumlah FROM pelayananktp ".$where);
         $datacount = $querycount->fetch_array();
         
         $totalData = $datacount['jumlah'];
@@ -88,7 +96,7 @@
         $dir = $_POST['order']['0']['dir'];
         
         if(empty($_POST['search']['value'])) {            
-            $query = mysqli_query($conn, "SELECT * FROM pelayananktp order by $order $dir LIMIT $limit OFFSET $start");
+            $query = mysqli_query($conn, "SELECT * FROM pelayananktp $where order by $order $dir LIMIT $limit OFFSET $start");
         } else {
             $search = $_POST['search']['value']; 
             
@@ -108,7 +116,8 @@
                 or nik LIKE '%$search%' 
                 or jenisPelayanan LIKE '%$search%' 
                 or keterangan LIKE '%$search%' 
-                or status LIKE '%$search%'"
+                or status LIKE '%$search%' "
+                .$where
             );
 
             $datacount = $querycount->fetch_array();

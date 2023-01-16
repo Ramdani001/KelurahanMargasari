@@ -159,7 +159,6 @@
            var keterangan = $("#keterangan").val();
            var tanggal = $("#tanggal").val();
 
-           
            // Validasi 
            if(jenisPelayanan == "" || tanggal == "" || keterangan == ""){
                return alert("Beberapa Form Belum Lengkap");
