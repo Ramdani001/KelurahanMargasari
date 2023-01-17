@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg bg-secondary position-relative shadow">
     <div class="container-fluid">
     <a class="navbar-brand ps-3" href="#">
-        <img src="../assets/img/logoKel.png" width="40" alt="">
+        <img src="<?= $main_url ?>assets/img/logoKel.png" width="40" alt="">
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon">
