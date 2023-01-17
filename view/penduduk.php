@@ -31,88 +31,123 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Pengajuan KTP</h1>
+                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Data Penduduk</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                         <form action="" method="post">
                             <div class="form-floating mb-3">
                                 <input type="hidden" class="form-control" id="id"  name="id" readonly value="">
-                                <input type="text" class="form-control" id="noPelayanan"  name="noPelayanan" readonly value="">
-                                <label for="floatingInput">
-                                    No Pelayanan
-                                </label>
-                            </div>
-                            <?php if($dataLogin["levelUser"] == "admin"){?>
-                            <div class="form-floating mb-3">
-                                <select name="nik" id="nik" class="form-control">
-                                    <?php for($i = 0; $i<count($nikData); $i++){?>
-                                    <option class="optStatus" value="<?=$nikData[$i]["nik"]?>"><?=$nikData[$i]["nik"]?> - <?=$nikData[$i]["namaLengkap"]?></option>
-                                    <?php }?>
-                                </select>
+                                <input type="text" class="form-control" id="nik"  name="nik" value="">
                                 <label for="floatingInput">
                                     NIK
                                 </label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="noKk"  name="noKk" value="">
+                                <label for="floatingInput">
+                                    No KK
+                                </label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="namaLengkap"  name="namaLengkap" value="">
+                                <label for="floatingInput">
+                                    Nama Lengkap
+                                </label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <select name="jenisKelamin" id="jenisKelamin" class="form-control">
+                                    <option class="optStatus" value="L">Laki-Laki</option>
+                                    <option class="optStatus" value="P">Perempuan</option>
+                                </select>
+                                <label for="floatingInput">
+                                    Jenis Kelamin
+                                </label>
+                            </div> 
+                            <div class="form-floating mb-3">
+                                <select name="golonganDarah" id="golonganDarah" class="form-control">
+                                    <option class="optStatus" value="A">A</option>
+                                    <option class="optStatus" value="B">B</option>
+                                    <option class="optStatus" value="AB">AB</option>
+                                    <option class="optStatus" value="O">O</option>
+                                </select>
+                                <label for="floatingInput">
+                                    Golongan Darah
+                                </label>
+                            </div> 
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="tempatLahir"  name="tempatLahir" value="">
+                                <label for="floatingInput">
+                                    Tempat Lahir
+                                </label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="date" class="form-control" id="tanggalLahir"  name="tanggalLahir" value="">
+                                <label for="floatingInput">
+                                    Tanggal Lahir
+                                </label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <select name="agama" id="agama" class="form-control">
+                                    <option class="optStatus" value="Islam">Islam</option>
+                                    <option class="optStatus" value="Kristen">Kristen</option>
+                                    <option class="optStatus" value="Katholik">Katholik</option>
+                                    <option class="optStatus" value="Hindu">Hindu</option>
+                                    <option class="optStatus" value="Budha">Budha</option>
+                                    <option class="optStatus" value="Konghucu">Konghucu</option>
+                                </select>
+                                <label for="floatingInput">
+                                    Agama
+                                </label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <select name="statusPerkawinan" id="statusPerkawinan" class="form-control">
+                                    <option class="optStatus" value="Kawin">Kawin</option>
+                                    <option class="optStatus" value="Belum Kawin">Belum Kawin</option>
+                                </select>
+                                <label for="floatingInput">
+                                    Status Perkawinan
+                                </label>
+                            </div> 
+                            <div class="form-floating mb-3">
+                                <textarea class="form-control" placeholder="Alamat" id="alamat" name="alamat"></textarea>
+                                <label for="floatingTextarea">Alamat</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="telepon" placeholder="Telepon" name="telepon">
+                                <label for="floatingInput">
+                                    Telepon
+                                </label>
                             </div>  
-                            <?php }?>
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="jenisPelayanan" placeholder="Jenis Pelayanan" name="jenisPelayanan">
+                                <input type="text" class="form-control" id="kewarganegaraan" placeholder="kewarganegaraan" name="kewarganegaraan">
                                 <label for="floatingInput">
-                                    Jenis Pelayanan
+                                    kewarganegaraan
+                                </label>
+                            </div>   
+                            <div class="form-floating mb-3">
+                                <select name="pekerjaan" id="pekerjaan" class="form-control">
+                                    <option class="optStatus" value="PNS / TNI POLRI">PNS / TNI POLRI</option>
+                                    <option class="optStatus" value="Karyawan Swasta">Karyawan Swasta</option>
+                                    <option class="optStatus" value="Karyawan BUMN">Karyawan BUMN</option>
+                                    <option class="optStatus" value="Pengusaha">Pengusaha</option>
+                                    <option class="optStatus" value="Ibu Rumah Tangga">Ibu Rumah Tangga</option>
+                                </select>
+                                <label for="floatingInput">
+                                    Pekerjaan
                                 </label>
                             </div>
                             <div class="form-floating mb-3">
-                                <input type="date" class="form-control" id="tanggal" name="tanggal">
+                                <input type="password" class="form-control" id="password" placeholder="Password" name="password">
                                 <label for="floatingInput">
-                                    Tanggal Pengajuan
+                                    Password
                                 </label>
-                            </div>
-                            <div class="form-floating">
-                                <textarea class="form-control" placeholder="Keterangan" id="keterangan" name="keterangan"></textarea>
-                                <label for="floatingTextarea">Keterangan</label>
                             </div>             
                         </form>
                     </div>
                     <div class="modal-footer">
                         <button type="button" onclick="clearData()" class="btn btn-danger" data-bs-dismiss="modal">Batal</button>
                         <button type="submit" name="submit" onclick="submitData()" class="btn btn-primary">Submit</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Modal Ganti Status -->
-        <div class="modal fade" id="changeStatusModal" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Update Status Pengajuan</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <form action="" method="post">
-                            <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="noStatus" name="noStatus" readonly>
-                                <label for="floatingInput">
-                                    No Pelayanan
-                                </label>
-                            </div>
-                            <div class="form-floating mb-3">
-                                <input type="hidden" class="form-control" id="idStatus"  name="idStatus" readonly value="">
-                                <label for="floatingInput">
-                                    Status
-                                </label>
-                                <select name="statusPelayanan" id="statusPelayanan" class="form-control">
-                                    <option class="optStatus" value="Diajukan">Diajukan</option>
-                                    <option class="optStatus" value="Diproses">Diproses</option>
-                                    <option class="optStatus" value="Disetujui">Disetujui</option>
-                                    <option class="optStatus" value="Ditolak">Ditolak</option>
-                                </select>
-                            </div>      
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" onclick="closeModalStatus()" class="btn btn-danger" data-bs-dismiss="modal">Batal</button>
-                        <button type="submit" name="submit" onclick="submitStatus()" class="btn btn-primary">Update</button>
                     </div>
                 </div>
             </div>
@@ -185,40 +220,47 @@
 
         function showModal(){
             clearData();
-            $.ajax({
-                url:"<?=$main_url;?>functionPenduduk",
-                method:"POST",
-                data:{function : "getKode"},
-                success:function(response) {
-                    $("#noPelayanan").val(response)
-                },
-                error:function(){
-                    alert("Terjadi Kesalahan");
-                }
-            });
             $("#staticBackdrop").modal('toggle');
         }
 
         function clearData(){
-           $("#id").val("");
-           $("#jenisPelayanan").val("");
-           $("#tanggal").val("");
-           $("#keterangan").val("");
+             $("#id").val("");
+             $("#nik").val("");
+             $("#noKk").val("");
+             $("#namaLengkap").val("");
+             $("#jenisKelamin").val("");
+             $("#golonganDarah").val("");
+             $("#tempatLahir").val("");
+             $("#tanggalLahir").val("");
+             $("#agama").val("");
+             $("#statusPerkawinan").val("");
+             $("#alamat").val("");
+             $("#telepon").val("");
+             $("#kewarganegaraan").val("");
+             $("#pekerjaan").val("");
+             $("#password").val("");
        }
        
        function submitData(){
            // Inisialisasi Variable & Ambil data dari id text input
            var id = $("#id").val();
-           var noPelayanan = $("#noPelayanan").val();
-           var jenisPelayanan = $("#jenisPelayanan").val();
-           var keterangan = $("#keterangan").val();
-           var tanggal = $("#tanggal").val();
            var nik = $("#nik").val();
-
-           console.log(nik);
+           var noKk = $("#noKk").val();
+           var namaLengkap = $("#namaLengkap").val();
+           var jenisKelamin = $("#jenisKelamin").val();
+           var golonganDarah = $("#golonganDarah").val();
+           var tempatLahir = $("#tempatLahir").val();
+           var tanggalLahir = $("#tanggalLahir").val();
+           var agama = $("#agama").val();
+           var statusPerkawinan = $("#statusPerkawinan").val();
+           var alamat = $("#alamat").val();
+           var telepon = $("#telepon").val();
+           var kewarganegaraan = $("#kewarganegaraan").val();
+           var pekerjaan = $("#pekerjaan").val();
+           var password = $("#password").val();
 
            // Validasi 
-           if(jenisPelayanan == "" || tanggal == "" || keterangan == ""){
+           if(nik == "" || noKk == "" || namaLengkap == "" || jenisKelamin == "" || golonganDarah == "" || tempatLahir == "" || tanggalLahir == "" || agama == ""|| statusPerkawinan == "" || alamat == "" || telepon == "" || kewarganegaraan == "" || pekerjaan == "" || password == ""){
                return alert("Beberapa Form Belum Lengkap");
             }else{
                // function diantaranya : create, update, delete, dll... sesuaikan dengan kebutuhan
@@ -236,12 +278,21 @@
                        // Opsional Data yg akan di post
                        id: id,
                        nik: nik,
-                       noPelayanan : noPelayanan,
-                       jenisPelayanan : jenisPelayanan,
-                       keterangan : keterangan,
-                       tanggal : tanggal
-                   },
-                   success:function(response) {
+                       noKk: noKk,
+                       namaLengkap: namaLengkap,
+                       jenisKelamin: jenisKelamin,
+                       golonganDarah: golonganDarah,
+                       tempatLahir: tempatLahir,
+                       tanggalLahir: tanggalLahir,
+                       agama: agama,
+                       statusPerkawinan: statusPerkawinan,
+                       alamat: alamat,
+                       telepon: telepon,
+                       kewarganegaraan: kewarganegaraan,
+                       pekerjaan: pekerjaan,
+                       password: password
+                    },
+                    success:function(response) {
                        // Kalo Sukses
                        if(response == 200){
                            alert("Success "+functionControl+" Data");
@@ -282,10 +333,20 @@
 
            // Masukan Semua Data Ke Masing - Maing Text Field
            $("#id").val(value.id);
-           $("#noPelayanan").val(value.noPelayanan);
-           $("#jenisPelayanan").val(value.jenisPelayanan);
-           $("#tanggal").val(value.tanggal);
-           $("#keterangan").val(value.keterangan);
+           $("#nik").val(value.nik);
+           $("#noKk").val(value.noKk);
+           $("#namaLengkap").val(value.namaLengkap);
+           $("#jenisKelamin").val(value.jenisKelamin);
+           $("#golonganDarah").val(value.golonganDarah);
+           $("#tempatLahir").val(value.tempatLahir);
+           $("#tanggalLahir").val(value.tanggalLahir);
+           $("#agama").val(value.agama);
+           $("#statusPerkawinan").val(value.statusPerkawinan);
+           $("#alamat").val(value.alamat);
+           $("#telepon").val(value.telepon);
+           $("#kewarganegaraan").val(value.kewarganegaraan);
+           $("#pekerjaan").val(value.pekerjaan);
+           $("#password").val(value.password);
 
            <?php if($dataLogin["levelUser"] == "admin"){?>
             $('#nik option').filter(function(){
