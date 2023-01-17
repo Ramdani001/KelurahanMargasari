@@ -130,14 +130,14 @@
 
         }
         $data = array();
-        if(!empty($query)){
+        if(!empty($query)){ 
             $no = $start + 1;
             while ($r = $query->fetch_array()){
                 $nestedData['no'] = $no;
                 $nestedData['noPelayanan'] = $r['noPelayanan'];
                 $nestedData['tanggal'] = $r['tanggal'];
                 $nestedData['nik'] = $r['nik'];
-                $nestedData['jenisPelayanan'] = $r['jenisPelayanan'];
+                $nestedData['nama'] = $r['nama'];
                 $nestedData['keterangan'] = $r['keterangan'];
                 
                 if($r["status"] == "Diajukan"){
@@ -194,11 +194,10 @@ function ubahData($conn) {
     $dataLogin = $_SESSION["dataLogin"];
     // Parsing Semua Variable
     $id = $_POST["id"];
-    $noPelayanan = $_POST["noPelayanan"];
     $tanggal = $_POST["tanggal"];
-    $nik = $_POST["nik"];
-    $nama = $dataLogin["nama"];
-    $keterangan = $dataLogin["keterangan"];
+    $nik = $dataLogin["nik"];
+    $nama = $_POST["nama"];
+    $keterangan = $_POST["keterangan"];
     if($dataLogin["levelUser"] == "admin"){
         $nik = $_POST["nik"];
     }
@@ -206,7 +205,6 @@ function ubahData($conn) {
     // Masukan Kedalam Query
     $query = "UPDATE pelayanankk SET
         nik = '$nik',
-        noPelayanan = '$noPelayanan',
         tanggal = '$tanggal',
         nik = '$nik',
         nama = '$nama',

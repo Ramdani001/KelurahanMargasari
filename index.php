@@ -27,6 +27,7 @@
             case $me.'/functionKtp' : require "controller/KtpController.php"; break;
 
             // Rizkan
+            case $me.'/functionKK' : require "controller/KKController.php"; break;
             case $me.'/ktp' : require "view/ktp.php"; break;
             case $me.'/kk' : require "view/kk.php"; break;
             case $me.'/kk' : require "view/kk.php"; break;

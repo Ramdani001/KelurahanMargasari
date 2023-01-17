@@ -45,7 +45,7 @@
                         </label>
                     </div>
                     <div class="form-floating mb-3">
-                        <input type="date" class="form-control" id="floatingInput" id="tanggal" name="tanggal">
+                        <input type="date" class="form-control" id="tanggal" name="tanggal">
                         <label for="floatingInput">
                             Tanggal Pengajuan
                         </label>
@@ -88,7 +88,7 @@
      <div class="modal fade" id="changeStatusModal" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <div class="modal-header">
+                    <div class="modal-header"> 
                         <h1 class="modal-title fs-5" id="staticBackdropLabel">Update Status Pengajuan</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
@@ -171,7 +171,7 @@
                     "type": "POST"
                 },
                 "columns": [
-                    { "data": "No" },
+                    { "data": "no" },
                     { "data": "noPelayanan" },
                     { "data": "tanggal" },
                     { "data": "nik" },
@@ -309,8 +309,8 @@
         }
 
         function submitStatus(){
-            var ids = $('#idStatus').val()
-            var sts = $('#nama').val()
+            var ids = $('#idStatus').val() 
+            var sts = $('#statusPelayanan').val()
             console.log(ids)
             $.ajax({
                url:"<?=$main_url;?>functionKK",
