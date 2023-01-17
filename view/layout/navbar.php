@@ -11,35 +11,35 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav d-flex w-100 justify-content-center">
                 <li class="nav-item">
-                    <a class="nav-link " aria-current="page" href="<?= $main_url ?>index.php/">HOME</a>
+                    <a class="nav-link " aria-current="page" href="<?= $main_url ?>">HOME</a>
                 </li>
                 <?php if($dataLogin["levelUser"] == "admin"){?>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?= $main_url ?>index.php/penduduk">PENDUDUK</a>
+                    <a class="nav-link" href="<?= $main_url ?>penduduk">PENDUDUK</a>
                 </li>
                 <?php }?>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?php if($dataLogin["levelUser"] == "admin" || $dataLogin["levelUser"] == "user"){?><?= $main_url ?>index.php/ktp<?php }else{?><?= $main_url ?>index.php/login_user<?php }?>"> KTP </a>
+                    <a class="nav-link" href="<?php if($dataLogin["levelUser"] == "admin" || $dataLogin["levelUser"] == "user"){?><?= $main_url ?>ktp<?php }else{?><?= $main_url ?>login_user<?php }?>"> KTP </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?php if($dataLogin["levelUser"] == "admin" || $dataLogin["levelUser"] == "user"){?><?= $main_url ?>index.php/kk<?php }else{?><?= $main_url ?>index.php/login_user<?php }?>">KK</a>
+                    <a class="nav-link" href="<?php if($dataLogin["levelUser"] == "admin" || $dataLogin["levelUser"] == "user"){?><?= $main_url ?>kk<?php }else{?><?= $main_url ?>login_user<?php }?>">KK</a>
                 </li>
                 <li class="nav-item">
-                    <a href="<?php if($dataLogin["levelUser"] == "admin" || $dataLogin["levelUser"] == "user"){?><?= $main_url ?>index.php/kelahiran<?php }else{?><?= $main_url ?>index.php/login_user<?php }?>" class="nav-link">KELAHIRAN</a>
+                    <a href="<?php if($dataLogin["levelUser"] == "admin" || $dataLogin["levelUser"] == "user"){?><?= $main_url ?>kelahiran<?php }else{?><?= $main_url ?>login_user<?php }?>" class="nav-link">KELAHIRAN</a>
                 </li>
                 <li class="nav-item">
-                    <a href="<?php if($dataLogin["levelUser"] == "admin" || $dataLogin["levelUser"] == "user"){?><?= $main_url ?>index.php/kematian<?php }else{?><?= $main_url ?>index.php/login_user<?php }?>" class="nav-link">KEMATIAN</a>
+                    <a href="<?php if($dataLogin["levelUser"] == "admin" || $dataLogin["levelUser"] == "user"){?><?= $main_url ?>kematian<?php }else{?><?= $main_url ?>login_user<?php }?>" class="nav-link">KEMATIAN</a>
                 </li>
                 <li class="nav-item">
-                    <a href="<?php if($dataLogin["levelUser"] == "admin" || $dataLogin["levelUser"] == "user"){?><?= $main_url ?>index.php/pindah<?php }else{?><?= $main_url ?>index.php/login_user<?php }?>" class="nav-link">PINDAH</a>
+                    <a href="<?php if($dataLogin["levelUser"] == "admin" || $dataLogin["levelUser"] == "user"){?><?= $main_url ?>pindah<?php }else{?><?= $main_url ?>login_user<?php }?>" class="nav-link">PINDAH</a>
                 </li>
                 <li class="nav-item">
-                    <a href="<?php if($dataLogin["levelUser"] == "admin" || $dataLogin["levelUser"] == "user"){?><?= $main_url ?>index.php/datang<?php }else{?><?= $main_url ?>index.php/login_user<?php }?>" class="nav-link">DATANG</a>
+                    <a href="<?php if($dataLogin["levelUser"] == "admin" || $dataLogin["levelUser"] == "user"){?><?= $main_url ?>datang<?php }else{?><?= $main_url ?>login_user<?php }?>" class="nav-link">DATANG</a>
                 </li>
             </ul>
             <?php if($dataLogin == null){?>
                 <li class="nav-item position-relative ps-2 bg-primary rounded" style="list-style: none;">
-                    <a href="<?= $main_url ?>index.php/login_user" class="nav-link text-center" style="text-decoration: none;">Login</a>
+                    <a href="<?= $main_url ?>login_user" class="nav-link text-center" style="text-decoration: none;">Login</a>
                 </li>
             <?php }else{?>
                 <li class="nav position-relative ps-2 bg-primary rounded" style="list-style: none;">
@@ -57,7 +57,7 @@
                             <hr>
                             <div class="container">
                                 <div class="col-md-12">
-                                    <a href="<?= $main_url ?>index.php/logout" class="dropdown-item text-center text-light" style="text-decoration: none; color: black !important;">Logout</a>
+                                    <a href="<?= $main_url ?>logout" class="dropdown-item text-center text-light" style="text-decoration: none; color: black !important;">Logout</a>
                                 </div>
                             </div>
                             <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal" class="dropdown-item cursor-pointer text-center text-light" style="text-decoration: none; color: black !important;">Ganti Password</a>

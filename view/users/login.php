@@ -34,7 +34,7 @@
                     <h3>Kelurahan</h3>
                 </div>
                 <div class="card-body">
-                    <form action="<?=$main_url?>index.php/functionLogin" method="post">
+                    <form action="<?=$main_url?>functionLogin" method="post">
                         <?php if($_SESSION["isFailed"]){?>
                         <div class="input-group flex-nowrap mb-3">
                             <span class="input-group-text" id="addon-wrapping">
