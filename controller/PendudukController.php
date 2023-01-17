@@ -13,7 +13,6 @@
         }
     }
 
-
     // Fungsi Create
     function tambahData($conn) {
         // Panggil Ulang Session
@@ -31,7 +30,6 @@
         $kewarganegaraan = $_POST["kewarganegaraan"];
         $pekerjaan = $_POST["pekerjaan"];
         $password = $_POST["password"];
-
         
         // Masukan Kedalam Query
         $query = "INSERT INTO userPenduduk

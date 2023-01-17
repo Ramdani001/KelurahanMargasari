@@ -152,43 +152,6 @@
                 </div>
             </div>
         </div>
-        <!-- Modal Ganti Status -->
-        <div class="modal fade" id="changeStatusModal" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Update Status Pengajuan</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <form action="" method="post">
-                            <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="noStatus" name="noStatus" readonly>
-                                <label for="floatingInput">
-                                    No Pelayanan
-                                </label>
-                            </div>
-                            <div class="form-floating mb-3">
-                                <input type="hidden" class="form-control" id="idStatus"  name="idStatus" readonly value="">
-                                <label for="floatingInput">
-                                    Status
-                                </label>
-                                <select name="statusPelayanan" id="statusPelayanan" class="form-control">
-                                    <option class="optStatus" value="Diajukan">Diajukan</option>
-                                    <option class="optStatus" value="Diproses">Diproses</option>
-                                    <option class="optStatus" value="Disetujui">Disetujui</option>
-                                    <option class="optStatus" value="Ditolak">Ditolak</option>
-                                </select>
-                            </div>      
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" onclick="closeModalStatus()" class="btn btn-danger" data-bs-dismiss="modal">Batal</button>
-                        <button type="submit" name="submit" onclick="submitStatus()" class="btn btn-primary">Update</button>
-                    </div>
-                </div>
-            </div>
-        </div>
         <!-- End Modal -->
         <!-- Table -->
         <div class="container-fluid mt-5" style="position: fixed; top: 20%;">
