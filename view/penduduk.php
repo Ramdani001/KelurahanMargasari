@@ -163,7 +163,7 @@
             table = $('#tableData').DataTable({
                "processing": true, "serverSide": true,
                "ajax":{
-                   "url": "<?=$main_url;?>index.php/functionPenduduk",
+                   "url": "<?=$main_url;?>functionPenduduk",
                    "data": function ( d ) {
                        d.function = "readDataTable"
                     },
@@ -186,7 +186,7 @@
         function showModal(){
             clearData();
             $.ajax({
-                url:"<?=$main_url;?>index.php/functionPenduduk",
+                url:"<?=$main_url;?>functionPenduduk",
                 method:"POST",
                 data:{function : "getKode"},
                 success:function(response) {
@@ -229,7 +229,7 @@
                console.log(functionControl);
                // Post Data Dengan Ajax
                $.ajax({
-                   url:"<?=$main_url;?>index.php/functionPenduduk",
+                   url:"<?=$main_url;?>functionPenduduk",
                    method:"POST",
                    data:{
                        function : functionControl,
@@ -260,7 +260,7 @@
        
        function deleteData(id){
            $.ajax({
-               url:"<?=$main_url;?>index.php/functionPenduduk",
+               url:"<?=$main_url;?>functionPenduduk",
                method:"POST",
                data:{function : "delete",id : id},
                success:function(response) {
@@ -313,7 +313,7 @@
             var sts = $('#statusPelayanan').val()
             console.log(ids)
             $.ajax({
-               url:"<?=$main_url;?>index.php/functionPenduduk",
+               url:"<?=$main_url;?>functionPenduduk",
                method:"POST",
                data:{function : "gantiStatus", id : ids, status: sts},
                success:function(response) {
