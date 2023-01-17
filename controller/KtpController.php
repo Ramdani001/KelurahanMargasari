@@ -111,6 +111,7 @@
                 or jenisPelayanan LIKE '%$search%' 
                 or keterangan LIKE '%$search%' 
                 or status LIKE '%$search%' 
+                $where
                 order by $order $dir LIMIT $limit OFFSET $start"
             );
             

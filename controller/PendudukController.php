@@ -71,23 +71,24 @@
 
         $columns = array( 
             0 =>'id', 
-            1 =>'nik',
-            2=> 'jenisPelayanan',
-            3=> 'tanggal',
-            4=> 'keterangan',
-            5=> 'createdBy',
-            6=> 'createdAt',
-            7=> 'noPelayanan',
-            8=> 'status',
+            1 =>'nik', 
+            2=> 'noKk', 
+            3=> 'namaLengkap', 
+            4=> 'jenisKelamin',
+            5=> 'golonganDarah', 
+            6=> 'tempatLahir', 
+            7=> 'tanggalLahir', 
+            8=> 'agama',
+            9=> 'statusPerkawinan', 
+            10=> 'alamat', 
+            11=> 'telepon', 
+            12=> 'kewarganegaraan',
+            13=> 'pekerjaan', 
+            14=> 'password', 
+            15=> 'levelUser',
         );
 
-        $where = "";
-
-        if($dataLogin["levelUser"] == "user"){
-            $where = "WHERE nik = ".$dataLogin["nik"];
-        }
-
-        $querycount = mysqli_query($conn, "SELECT count(id) as jumlah FROM userPenduduk ".$where);
+        $querycount = mysqli_query($conn, "SELECT count(id) as jumlah FROM userPenduduk ");
         $datacount = $querycount->fetch_array();
         
         $totalData = $datacount['jumlah'];
@@ -100,28 +101,44 @@
         $dir = $_POST['order']['0']['dir'];
         
         if(empty($_POST['search']['value'])) {            
-            $query = mysqli_query($conn, "SELECT * FROM userPenduduk $where order by $order $dir LIMIT $limit OFFSET $start");
+            $query = mysqli_query($conn, "SELECT * FROM userPenduduk WHERE levelUser = 'user' order by $order $dir LIMIT $limit OFFSET $start");
         } else {
             $search = $_POST['search']['value']; 
             
             $query = mysqli_query($conn, "SELECT * FROM userPenduduk 
-                WHERE noPelayanan LIKE '%$search%' 
-                or tanggal LIKE '%$search%' 
-                or nik LIKE '%$search%' 
-                or jenisPelayanan LIKE '%$search%' 
-                or keterangan LIKE '%$search%' 
-                or status LIKE '%$search%' 
+                WHERE nik LIKE '%$search%' 
+                or noKk LIKE '%$search%' 
+                or namaLengkap LIKE '%$search%' 
+                or jenisKelamin LIKE '%$search%' 
+                or golonganDarah LIKE '%$search%' 
+                or tempatLahir LIKE '%$search%' 
+                or tanggalLahir LIKE '%$search%' 
+                or agama LIKE '%$search%' 
+                or statusPerkawinan LIKE '%$search%' 
+                or alamat LIKE '%$search%' 
+                or telepon LIKE '%$search%' 
+                or kewarganegaraan LIKE '%$search%' 
+                or pekerjaan LIKE '%$search%' 
+                or levelUser LIKE 'user'
                 order by $order $dir LIMIT $limit OFFSET $start"
             );
             
             $querycount = mysqli_query($conn, "SELECT count(id) as jumlah FROM userPenduduk 
-                WHERE noPelayanan LIKE '%$search%' 
-                or tanggal LIKE '%$search%' 
-                or nik LIKE '%$search%' 
-                or jenisPelayanan LIKE '%$search%' 
-                or keterangan LIKE '%$search%' 
+                WHERE nik LIKE '%$search%' 
+                or noKk LIKE '%$search%' 
+                or namaLengkap LIKE '%$search%' 
+                or jenisKelamin LIKE '%$search%' 
+                or golonganDarah LIKE '%$search%' 
+                or tempatLahir LIKE '%$search%' 
+                or tanggalLahir LIKE '%$search%' 
+                or agama LIKE '%$search%' 
+                or statusPerkawinan LIKE '%$search%' 
+                or alamat LIKE '%$search%' 
+                or telepon LIKE '%$search%' 
+                or kewarganegaraan LIKE '%$search%' 
+                or pekerjaan LIKE '%$search%' 
+                or levelUser LIKE 'user' 
                 or status LIKE '%$search%' "
-                .$where
             );
 
             $datacount = $querycount->fetch_array();
@@ -134,44 +151,28 @@
             $no = $start + 1;
             while ($r = $query->fetch_array()){
                 $nestedData['no'] = $no;
-                $nestedData['noPelayanan'] = $r['noPelayanan'];
-                $nestedData['tanggal'] = $r['tanggal'];
                 $nestedData['nik'] = $r['nik'];
-                $nestedData['jenisPelayanan'] = $r['jenisPelayanan'];
-                $nestedData['keterangan'] = $r['keterangan'];
-                
-                if($r["status"] == "Diajukan"){
-                    $nestedData['status'] = "<button class='btn btn-sm btn-primary'> <i class='fa-solid fa-clock' style='color: white;'></i> Diajukan&nbsp; </button> ";
-                }else if($r["status"] == "Diproses"){
-                    $nestedData['status'] = "<button class='btn btn-sm btn-warning'> <i class='fa-solid fa-clock' style='color: white;'></i> Diproses </button> ";
-                }else if($r["status"] == "Disetujui"){
-                    $nestedData['status'] = "<button class='btn btn-sm btn-success'> <i class='fa-solid fa-check' style='color: white;'></i> Disetujui </button> ";
-                }else if($r["status"] == "Ditolak"){
-                    $nestedData['status'] = "<button class='btn btn-sm btn-danger'> <i class='fa-solid fa-close' style='color: white;'></i> &nbsp;&nbsp; Ditolak &nbsp; </button> ";
-                }
+                $nestedData['noKk'] = $r['noKk'];
+                $nestedData['namaLengkap'] = $r['namaLengkap'];
+                $nestedData['jenisKelamin'] = $r['jenisKelamin'];
+                $nestedData['golonganDarah'] = $r['golonganDarah'];
+                $nestedData['tempatLahir'] = $r['tempatLahir'];
+                $nestedData['tanggalLahir'] = $r['tanggalLahir'];
+                $nestedData['agama'] = $r['agama'];
+                $nestedData['statusPerkawinan'] = $r['statusPerkawinan'];
+                $nestedData['alamat'] = $r['alamat'];
+                $nestedData['telepon'] = $r['telepon'];
+                $nestedData['kewarganegaraan'] = $r['kewarganegaraan'];
+                $nestedData['pekerjaan'] = $r['pekerjaan'];
+                $nestedData['password'] = $r['password'];
+                $nestedData['levelUser'] = $r['levelUser'];
                 
                 $aksi = "";
                 // Enskripsi Data Agar Tidak Error Saat Fetch Data ke javascript
                 $encryptParse = base64_encode(json_encode($r));
                 //Tambahkan Button Aksi
-                if($dataLogin["levelUser"] == "admin"){
-                    if($r["status"] == "Diajukan"){
-                        $aksi .= "<button onclick=showModalStatus('".$encryptParse."') class='btn btn-sm btn-primary'> status </button> ";
-                    }else if($r["status"] == "Diproses"){
-                        $aksi .= "<button onclick=showModalStatus('".$encryptParse."') class='btn btn-sm btn-primary'> status </button> ";
-                    }else if($r["status"] == "Disetujui"){
-                        $aksi .= "<button onclick=showModalStatus('".$encryptParse."') class='btn btn-sm btn-primary'> status </button> ";
-                    }else if($r["status"] == "Ditolak"){
-                        $aksi .= "<button onclick=showModalStatus('".$encryptParse."') class='btn btn-sm btn-primary'> status </button> ";
-                    }
-                }
-
-                if($r["status"] == "Diajukan"){
-                    $aksi .= "<button onclick=editData('".$encryptParse."') class='btn btn-sm btn-success'> <i class='fa-solid fa-pen' style='color: white;'></i></button> ";
-                    $aksi .= "<button onclick=deleteData(".$r["id"].") class='btn btn-sm btn-danger'> <i class='fa-solid fa-trash' style='color: white;'></i></button>";
-                }else if($r["status"] == "Ditolak"){
-                    $aksi .= "<button onclick=editData('".$encryptParse."') class='btn btn-sm btn-success'> <i class='fa-solid fa-pen' style='color: white;'></i></button> ";
-                }
+                $aksi .= "<button onclick=editData('".$encryptParse."') class='btn btn-sm btn-success'> <i class='fa-solid fa-pen' style='color: white;'></i></button> ";
+                $aksi .= "<button onclick=deleteData(".$r["id"].") class='btn btn-sm btn-danger'> <i class='fa-solid fa-trash' style='color: white;'></i></button>";
 
                 $nestedData['aksi'] = $aksi;
                 

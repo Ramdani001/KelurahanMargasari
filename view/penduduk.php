@@ -129,12 +129,12 @@
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>No Pelayanan</th>
-                            <th>Tanggal Pengajuan</th>
                             <th>NIK</th>
-                            <th>Jenis Pelayanan</th>
-                            <th>Keterangan</th>
-                            <th>Status</th>
+                            <th>No KK</th>
+                            <th>Nama</th>
+                            <th>Kelamin</th>
+                            <th>Alamat</th>
+                            <th>Pekerjaan</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -172,12 +172,12 @@
                 },
                 "columns": [
                     { "data": "no" },
-                    { "data": "noPelayanan" },
-                    { "data": "tanggal" },
                     { "data": "nik" },
-                    { "data": "jenisPelayanan" },
-                    { "data": "keterangan" },
-                    { "data": "status" },
+                    { "data": "noKk" },
+                    { "data": "namaLengkap" },
+                    { "data": "jenisKelamin" },
+                    { "data": "alamat" },
+                    { "data": "pekerjaan" },
                     { "data": "aksi" },
                 ]       
             });
