@@ -6,59 +6,69 @@
     // Wajib Tambahkan Parameter $conn untuk memasukan koneksi database ke function
     if(isset($_POST["function"])){
         switch($_POST["function"]){
-            case "getKode": getKode($conn); break;
             case "create": tambahData($conn); break;
             case "readDataTable": readDataTable($conn); break;
             case "update": ubahData($conn); break;
             case "delete": hapusData($conn); break;
-            case "gantiStatus": gantiStatus($conn); break;
         }
     }
-    
-    // Get Data Nik
-    $queryNik = mysqli_query($conn, "SELECT * FROM userPenduduk WHERE levelUser = 'user' ORDER BY id ");
-    $nikData = [];
-    while ( $row = mysqli_fetch_assoc($queryNik) ){
-        $nikData[] = $row;
-    }
 
-    function getKode($conn){
-        $noPelayananGenerate = "-";
-
-        // Generate Kode Atau No Pelayanan
-        $query = mysqli_query($conn, "SELECT * FROM userPenduduk ORDER BY id DESC LIMIT 1");
-        $row = mysqli_fetch_assoc($query);
-        if($row == null){
-            $noPelayananGenerate = "1 KTP/".date("Y");
-        }else{
-            $noPelayananGenerate = ($row["id"]+1)." KTP/".date("Y");
-        }
-
-        echo $noPelayananGenerate;
-    }
 
     // Fungsi Create
     function tambahData($conn) {
         // Panggil Ulang Session
-        $dataLogin = $_SESSION["dataLogin"];
-        
-        // Parsing Semua Variable
-        $nik = $dataLogin["nik"];
-        if($dataLogin["levelUser"] == "admin"){
-            $nik = $_POST["nik"];
-        }
-        $jenisPelayanan = $_POST["jenisPelayanan"];
-        $tanggal = $_POST["tanggal"];
-        $keterangan = $_POST["keterangan"];
-        $createdBy = $dataLogin["id"];
-        $createdAt = date("Y-m-d h:i:s");
-        $noPelayanan = $_POST["noPelayanan"];
-        $status = "Diajukan";
+        $nik = $_POST["nik"];
+        $noKk = $_POST["noKk"];
+        $namaLengkap = $_POST["namaLengkap"];
+        $jenisKelamin = $_POST["jenisKelamin"];
+        $golonganDarah = $_POST["golonganDarah"];
+        $tempatLahir = $_POST["tempatLahir"];
+        $tanggalLahir = $_POST["tanggalLahir"];
+        $agama = $_POST["agama"];
+        $statusPerkawinan = $_POST["statusPerkawinan"];
+        $alamat = $_POST["alamat"];
+        $telepon = $_POST["telepon"];
+        $kewarganegaraan = $_POST["kewarganegaraan"];
+        $pekerjaan = $_POST["pekerjaan"];
+        $password = $_POST["password"];
+
         
         // Masukan Kedalam Query
         $query = "INSERT INTO userPenduduk
-        (nik, jenisPelayanan, tanggal, keterangan, createdBy, createdAt, noPelayanan, `status`)
-        VALUES ('$nik','$jenisPelayanan','$tanggal','$keterangan','$createdBy','$createdAt','$noPelayanan','$status')";
+        (
+            nik,
+            noKk,
+            namaLengkap,
+            jenisKelamin,
+            golonganDarah,
+            tempatLahir,
+            tanggalLahir,
+            agama,
+            statusPerkawinan,
+            alamat,
+            telepon,
+            kewarganegaraan,
+            pekerjaan,
+            password,
+            levelUser
+        )
+        VALUES (
+            '$nik',
+            '$noKk',
+            '$namaLengkap',
+            '$jenisKelamin',
+            '$golonganDarah',
+            '$tempatLahir',
+            '$tanggalLahir',
+            '$agama',
+            '$statusPerkawinan',
+            '$alamat',
+            '$telepon',
+            '$kewarganegaraan',
+            '$pekerjaan',
+            '$password',
+            'user'
+        )";
 
         mysqli_query($conn, $query);
         echo 200;
@@ -118,8 +128,7 @@
                 or alamat LIKE '%$search%' 
                 or telepon LIKE '%$search%' 
                 or kewarganegaraan LIKE '%$search%' 
-                or pekerjaan LIKE '%$search%' 
-                or levelUser LIKE 'user'
+                or pekerjaan LIKE '%$search%'
                 order by $order $dir LIMIT $limit OFFSET $start"
             );
             
@@ -136,9 +145,7 @@
                 or alamat LIKE '%$search%' 
                 or telepon LIKE '%$search%' 
                 or kewarganegaraan LIKE '%$search%' 
-                or pekerjaan LIKE '%$search%' 
-                or levelUser LIKE 'user' 
-                or status LIKE '%$search%' "
+                or pekerjaan LIKE '%$search%'" 
             );
 
             $datacount = $querycount->fetch_array();
@@ -196,21 +203,37 @@
         $dataLogin = $_SESSION["dataLogin"];
         // Parsing Semua Variable
         $id = $_POST["id"];
-        $jenisPelayanan = $_POST["jenisPelayanan"];
-        $tanggal = $_POST["tanggal"];
-        $keterangan = $_POST["keterangan"];
-        $nik = $dataLogin["nik"];
-        if($dataLogin["levelUser"] == "admin"){
-            $nik = $_POST["nik"];
-        }
+        $nik = $_POST["nik"];
+        $noKk = $_POST["noKk"];
+        $namaLengkap = $_POST["namaLengkap"];
+        $jenisKelamin = $_POST["jenisKelamin"];
+        $golonganDarah = $_POST["golonganDarah"];
+        $tempatLahir = $_POST["tempatLahir"];
+        $tanggalLahir = $_POST["tanggalLahir"];
+        $agama = $_POST["agama"];
+        $statusPerkawinan = $_POST["statusPerkawinan"];
+        $alamat = $_POST["alamat"];
+        $telepon = $_POST["telepon"];
+        $kewarganegaraan = $_POST["kewarganegaraan"];
+        $pekerjaan = $_POST["pekerjaan"];
+        $password = $_POST["password"];
         
         // Masukan Kedalam Query
         $query = "UPDATE userPenduduk SET
             nik = '$nik',
-            jenisPelayanan = '$jenisPelayanan',
-            tanggal = '$tanggal',
-            keterangan = '$keterangan',
-            `status` = 'Diajukan'
+            noKk = '$noKk',
+            namaLengkap = '$namaLengkap',
+            jenisKelamin = '$jenisKelamin',
+            golonganDarah = '$golonganDarah',
+            tempatLahir = '$tempatLahir',
+            tanggalLahir = '$tanggalLahir',
+            agama = '$agama',
+            statusPerkawinan = '$statusPerkawinan',
+            alamat = '$alamat',
+            telepon = '$telepon',
+            kewarganegaraan = '$kewarganegaraan',
+            pekerjaan = '$pekerjaan',
+            password = '$password'
             WHERE id = '$id'
         ";
         mysqli_query($conn, $query);
@@ -223,16 +246,6 @@
         $query = "DELETE FROM userPenduduk WHERE id = $id";
         mysqli_query($conn, $query);
         echo 200;
-    }
-
-    // Fungsi Ganti Status
-    function gantiStatus($conn) {
-        $id = $_POST["id"];
-        $status = $_POST["status"];
-        $query = "UPDATE userPenduduk SET `status` = '$status' WHERE id = '$id'";
-        mysqli_query($conn, $query);
-        echo 200;
-        
     }
 
 ?>
