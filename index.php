@@ -25,6 +25,8 @@
             case $me.'/functionLogin' : require "controller/LoginController.php"; break;
             case $me.'/logout' : require "controller/LogoutController.php"; break;
             case $me.'/functionKtp' : require "controller/KtpController.php"; break;
+            case $me.'/penduduk' : require "view/penduduk.php"; break;
+            case $me.'/functionPenduduk' : require "Controller/PendudukController.php"; break;
 
             // Rizkan
             case $me.'/ktp' : require "view/ktp.php"; break;
