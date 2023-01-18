@@ -83,10 +83,13 @@
         );
 
         $where = "";
+        $or = "";
 
         if($dataLogin["levelUser"] == "user"){
             $where = "WHERE nik = ".$dataLogin["nik"];
+            $or = "OR nik = ".$dataLogin["nik"];
         }
+
 
         $querycount = mysqli_query($conn, "SELECT count(id) as jumlah FROM pelayanankk ".$where);
         $datacount = $querycount->fetch_array();
@@ -112,6 +115,7 @@
                 or nama LIKE '%$search%' 
                 or keterangan LIKE '%$search%' 
                 or status LIKE '%$search%' 
+                $or
                 order by $order $dir LIMIT $limit OFFSET $start"
             );
             
@@ -122,7 +126,7 @@
                 or nama LIKE '%$search%' 
                 or keterangan LIKE '%$search%' 
                 or status LIKE '%$search%' "
-                .$where
+                .$or
             );
 
             $datacount = $querycount->fetch_array();
