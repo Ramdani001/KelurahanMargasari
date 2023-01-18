@@ -117,7 +117,7 @@
                 or tanggalKematian LIKE '%$search%' 
                 or umur LIKE '%$search%' 
                 or tempatKematian LIKE '%$search%' 
-                or sebabaKematian LIKE '%$search%' 
+                or sebabKematian LIKE '%$search%' 
                 or namaPelapor LIKE '%$search%' 
                 or nik LIKE '%$search%' 
                 or status LIKE '%$search%' 
@@ -131,7 +131,7 @@
                 or tanggalKematian LIKE '%$search%' 
                 or umur LIKE '%$search%' 
                 or sebabKematian LIKE '%$search%' 
-                or tempatKematiann LIKE '%$search%' 
+                or tempatKematian LIKE '%$search%' 
                 or namaPelapor LIKE '%$search%' 
                 or nik LIKE '%$search%' 
                 or status LIKE '%$search%' "
