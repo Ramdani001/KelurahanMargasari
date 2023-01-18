@@ -25,6 +25,10 @@ html, body {
     height: 100%;
   }
 
+  body{
+    background-image: url('../img/bgBody1.jpg');
+  }
+
 .navbar a{
     color: white !important;
     z-index: 1 !important;
@@ -48,7 +52,6 @@ html, body {
     background-size: cover;
     background-position: left;
     background-repeat: no-repeat;
-    background-image: url('../img/bgBody1.jpg');
 }
 
 #content::before{
@@ -76,4 +79,8 @@ html, body {
     z-index: -1;
     position: absolute;
     background: white;
+}
+
+#tableData_paginate .pagination .page-item{
+    margin: 5px 8px !important;
 }

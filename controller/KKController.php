@@ -29,9 +29,9 @@
         $query = mysqli_query($conn, "SELECT * FROM pelayanankk ORDER BY id DESC LIMIT 1");
         $row = mysqli_fetch_assoc($query);
         if($row == null){
-            $noPelayananGenerate = "1 KTP/".date("Y");
+            $noPelayananGenerate = "1 KK/".date("Y");
         }else{
-            $noPelayananGenerate = ($row["id"]+1)." KTP/".date("Y");
+            $noPelayananGenerate = ($row["id"]+1)." KK/".date("Y");
         }
 
         echo $noPelayananGenerate;

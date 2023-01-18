@@ -20,7 +20,7 @@
     
 </head>
 <body>
-    <div id="content" class="" style="overflow-y: none !important;">
+    <div id="content" class="">
         <!-- Navbar -->
         <?php include('view/layout/navbar.php');?> 
         <!-- End Navbar -->
@@ -154,12 +154,12 @@
         </div>
         <!-- End Modal -->
         <!-- Table -->
-        <div class="container-fluid mt-5" style="position: fixed; top: 20%;">
+        <div class="container-fluid mt-5 pb-10" style="position: relative !important; top: 10%; !important width: 100% !important;">
             <!-- Button trigger modal -->
             <button type="button" class="btn btn-primary" onclick="showModal()">
             Tambah
             </button>
-            <div class="bg-light rounded mt-2 p-2"> 
+            <div class="bg-light rounded mt-2 text-center p-2"> 
                 <table class="table table-striped table-hover dtabel text-center" id="tableData" width="100%">
                     <thead>
                         <tr>

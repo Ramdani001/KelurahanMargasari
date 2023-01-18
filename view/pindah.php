@@ -73,12 +73,12 @@
     <!-- End Modal -->
 
 <!-- Table -->
-<div class="container-fluid mt-5" style="position: fixed; top: 20%;">
+<div class="container-fluid mt-5 pb-5" style="position: relative !important; top: 10%; !important width: 100% !important;">
     <!-- Button trigger modal -->
     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
     Tambah
     </button>
-    <div class="bg-light rounded mt-2 p-2"> 
+    <div class="bg-light rounded mt-2 text-center p-2"> 
         <table class="table table-striped table-hover dtabel text-center">
             <thead>
                 <tr>

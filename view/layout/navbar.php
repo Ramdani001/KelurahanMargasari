@@ -1,5 +1,5 @@
-<nav class="navbar navbar-expand-lg bg-secondary position-relative shadow">
-    <div class="container-fluid">
+<nav class="navbar navbar-expand-lg bg-secondary position-fixed shadow w-100" style="top: 0 !important; z-index: 10 !important;">
+    <div class="container-fluid"> 
     <a class="navbar-brand ps-3" href="#">
         <img src="<?= $main_url ?>assets/img/logoKel.png" width="40" alt="">
     </a>
