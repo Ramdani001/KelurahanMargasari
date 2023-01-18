@@ -60,7 +60,7 @@
                                     <a href="<?= $main_url ?>logout" class="dropdown-item text-center text-light" style="text-decoration: none; color: black !important;">Logout</a>
                                 </div>
                             </div>
-                            <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal" class="dropdown-item cursor-pointer text-center text-light" style="text-decoration: none; color: black !important;">Ganti Password</a>
+                            <button onclick=showModalGantiPass() class="dropdown-item cursor-pointer text-center text-light" style="text-decoration: none; color: black !important;">Ganti Password</button>
                         </ul>
                     </div>
     
@@ -71,7 +71,7 @@
 </nav>
 
 <!-- Modal Ganti Password-->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModal" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -110,7 +110,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary">Save changes</button>
+                <button type="button" onclick=submitGantiPassword() class="btn btn-primary">Save changes</button>
             </div>
         </div>
     </div>

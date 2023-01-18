@@ -15,6 +15,40 @@
 
  
  <script>
+
+    function showModalGantiPass(){
+        $('#pass').val("")
+        $('#passBaru').val("")
+        $('#passBaru1').val("")
+        $("#exampleModal").modal('toggle');
+    }
+
+     function submitGantiPassword(){
+         var pass = $('#pass').val()
+         var newPass1 = $('#passBaru').val()
+         var newPass2 = $('#passBaru1').val()
+         
+         if(newPass1 != newPass2){
+            return alert("Password Baru Tidak Sama");
+         }
+         $.ajax({
+             url:"<?=$main_url;?>functionPenduduk",
+             method:"POST",
+             data:{function : "gantiPassword", pass: pass, newPass: newPass1},
+             success:function(response) {
+                if(response == 200){
+                    alert("Success Mengganti Password");
+                    $("#exampleModal").modal('toggle');
+                }else if(response == 201){
+                    alert("Password Salah");
+                }
+            },
+            error:function(){
+                alert("Terjadi Kesalahan");
+            }
+        });
+    }
+
     document.getElementById("show1").addEventListener("click", showPass1);
     document.getElementById("show2").addEventListener("click", showPass2);
     document.getElementById("show3").addEventListener("click", showPass3);

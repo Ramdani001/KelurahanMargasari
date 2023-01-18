@@ -10,6 +10,7 @@
             case "readDataTable": readDataTable($conn); break;
             case "update": ubahData($conn); break;
             case "delete": hapusData($conn); break;
+            case "gantiPassword": gantiPassword($conn); break;
         }
     }
 
@@ -244,6 +245,26 @@
         $query = "DELETE FROM userPenduduk WHERE id = $id";
         mysqli_query($conn, $query);
         echo 200;
+    }
+
+    function gantiPassword($conn) {
+        $dataLogin = $_SESSION["dataLogin"];
+        $id = $dataLogin["id"];
+        $pass = $_POST["pass"];
+        $newPass = $_POST["newPass"];
+
+        $check = mysqli_query($conn, "SELECT * FROM userPenduduk WHERE id = $id");
+        $row = mysqli_fetch_assoc($check);
+
+        if($row["password"] == $pass){
+            $query = "UPDATE userPenduduk set password = '$newPass'   WHERE id = $id";
+            mysqli_query($conn, $query);
+            $dataLogin["password"] = $newPass;
+            echo 200;
+        }else{
+            echo 201;
+        }
+
     }
 
 ?>
