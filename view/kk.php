@@ -51,6 +51,10 @@
                         </label>
                     </div> 
                     
+                    <?php if($dataLogin["levelUser"] == "user" ) {?>
+                        <input type="text" name="nik" id="nik" value="<?= $dataLogin["nik"]; ?>" hidden>
+                    <?php }?>
+                    
                     <?php if($dataLogin["levelUser"] == "admin") {?>
                         <div class="form-floating mb-3">
                             <select name="nik" id="nik" class="form-control">
@@ -164,7 +168,7 @@
                 "processing": true, "serverSide": true,
                 "ajax":{
                     "url":"<?=$main_rul;?>functionKK",
-                    "data": function ( d ) {
+                    "data": function ( d ) { 
                         d.function = "readDataTable"
                     },
                     "dataType": "json",
