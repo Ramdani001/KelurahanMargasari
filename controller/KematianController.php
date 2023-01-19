@@ -43,10 +43,11 @@
         $dataLogin = $_SESSION["dataLogin"];
         
         // Parsing Semua Variable
-        $nik = $dataLogin["nik"];
-        if($dataLogin["levelUser"] == "admin"){
+        // $nik = $dataLogin["nik"];
+        // if($dataLogin["levelUser"] == "admin"){
             $nik = $_POST["nik"];
-        }
+        // }
+
         $tanggalPengajuan = $_POST["tanggalPengajuan"];
         $tanggalKematian = $_POST["tanggalKematian"];
         $umur = $_POST["umur"];
@@ -91,7 +92,7 @@
         $or = "";
 
         if($dataLogin["levelUser"] == "user"){
-            $where = "WHERE nik = ".$dataLogin["nik"];
+            $where = "WHERE createdBy = ".$dataLogin["id"];
             $or = "OR nik = ".$dataLogin["nik"];
         }
 
