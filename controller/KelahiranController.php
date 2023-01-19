@@ -155,7 +155,6 @@
                 or saksi2 LIKE '%$search%' 
                 or nikSaksi2 LIKE '%$search%' 
                 or status LIKE '%$search%' 
-                $or
                 order by $order $dir LIMIT $limit OFFSET $start"
             );
             
@@ -180,7 +179,6 @@
                 or saksi2 LIKE '%$search%' 
                 or nikSaksi2 LIKE '%$search%' 
                 or status LIKE '%$search%' "
-                .$or
             );
 
             $datacount = $querycount->fetch_array();

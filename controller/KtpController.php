@@ -82,11 +82,11 @@
         );
 
         $where = "";
-        $or = "";
+        $and = "";
 
         if($dataLogin["levelUser"] == "user"){
-            $where = "WHERE nik = ".$dataLogin["nik"];
-            $or = "OR nik = ".$dataLogin["nik"];
+            $where = "WHERE createdBy = ".$dataLogin["id"];
+            $and = "AND createdBy = ".$dataLogin["id"];
         }
 
         $querycount = mysqli_query($conn, "SELECT count(id) as jumlah FROM pelayananktp ".$where);
@@ -107,24 +107,20 @@
             $search = $_POST['search']['value']; 
             
             $query = mysqli_query($conn, "SELECT * FROM pelayananktp 
-                WHERE noPelayanan LIKE '%$search%' 
+                WHERE noPelayanan LIKE '%$search%'
                 or tanggal LIKE '%$search%' 
-                or nik LIKE '%$search%' 
                 or jenisPelayanan LIKE '%$search%' 
                 or keterangan LIKE '%$search%' 
-                or status LIKE '%$search%' 
-                $or
+                or status LIKE '%$search%'
                 order by $order $dir LIMIT $limit OFFSET $start"
             );
             
             $querycount = mysqli_query($conn, "SELECT count(id) as jumlah FROM pelayananktp 
                 WHERE noPelayanan LIKE '%$search%' 
                 or tanggal LIKE '%$search%' 
-                or nik LIKE '%$search%' 
                 or jenisPelayanan LIKE '%$search%' 
                 or keterangan LIKE '%$search%' 
                 or status LIKE '%$search%' "
-                .$or
             );
 
             $datacount = $querycount->fetch_array();
@@ -168,6 +164,8 @@
                         $aksi .= "<button onclick=showModalStatus('".$encryptParse."') class='btn btn-sm btn-primary'> status </button> ";
                     }
                 }
+
+                $aksi .= "<button onclick=printData('".$encryptParse."') class='btn btn-sm btn-primary'> <i class='fa-solid fa-print' style='color: white;'></i></button> ";
 
                 if($r["status"] == "Diajukan"){
                     $aksi .= "<button onclick=editData('".$encryptParse."') class='btn btn-sm btn-success'> <i class='fa-solid fa-pen' style='color: white;'></i></button> ";

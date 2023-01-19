@@ -115,7 +115,6 @@
                 or nama LIKE '%$search%' 
                 or keterangan LIKE '%$search%' 
                 or status LIKE '%$search%' 
-                $or
                 order by $order $dir LIMIT $limit OFFSET $start"
             );
             
@@ -126,7 +125,6 @@
                 or nama LIKE '%$search%' 
                 or keterangan LIKE '%$search%' 
                 or status LIKE '%$search%' "
-                .$or
             );
 
             $datacount = $querycount->fetch_array();
