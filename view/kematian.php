@@ -49,7 +49,7 @@
                                     Tanggal Pengajuan
                                 </label>
                             </div>
-                            <?php if($dataLogin["levelUser"] == "admin"){?>
+                            <?php// if($dataLogin["levelUser"] == "admin"){?>
                             <div class="form-floating mb-3">
                                 <select name="nik" id="nik" class="form-control">
                                     <?php for($i = 0; $i<count($nikData); $i++){?>
@@ -60,7 +60,7 @@
                                     NIK
                                 </label>
                             </div>  
-                            <?php }?>
+                            <?php // }?>
                             <div class="form-floating mb-3">
                                 <input type="date" class="form-control" id="tanggalKematian" placeholder="Tanggal Kematian" name="tanggalKematian">
                                 <label for="floatingInput">
