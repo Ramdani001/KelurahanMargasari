@@ -6,7 +6,7 @@
         header("Location: login_user");
     }
 ?>  
-
+ 
 <!DOCTYPE html>
 <html lang="en">
 <!-- Panggil Tag <head> -->
@@ -94,6 +94,7 @@
                 </div>
             </div>
         </div>
+        
         <!-- Modal Ganti Status -->
         <div class="modal fade" id="changeStatusModal" aria-hidden="true">
             <div class="modal-dialog">
@@ -132,6 +133,7 @@
             </div>
         </div>
         <!-- End Modal -->
+
         <!-- Table -->
         <div class="container-fluid mt-5 pb-5" style="position: relative !important; top: 10%; !important width: 100% !important;">
             <!-- Button trigger modal -->
