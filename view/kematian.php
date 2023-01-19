@@ -94,7 +94,7 @@
                 </div>
             </div>
         </div>
-        
+
         <!-- Modal Ganti Status -->
         <div class="modal fade" id="changeStatusModal" aria-hidden="true">
             <div class="modal-dialog">
@@ -173,6 +173,7 @@
     <!-- Script Src / Footer -->
     <?php include('view/layout/footer.php');?> 
     <!-- End Script Src / Footer -->
+    
     <!-- Custom Script Disini -->
     <script>
 

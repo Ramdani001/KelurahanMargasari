@@ -31,6 +31,7 @@
             // Rizkan
             case $me.'/functionKematian' : require "controller/KematianController.php"; break;
             case $me.'/functionDatang' : require "controller/DatangController.php"; break;
+            case $me.'/functionPindah' : require "controller/PindahController.php"; break;
             case $me.'/functionKK' : require "controller/KKController.php"; break;
             case $me.'/ktp' : require "view/ktp.php"; break;
             case $me.'/kk' : require "view/kk.php"; break;
