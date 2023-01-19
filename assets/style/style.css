@@ -26,11 +26,11 @@ html, body {
   }
 
   body{
-    background-image: url('../img/bgBody1.jpg');
+    background-image: url('../img/bgMunjul.jpeg');
   }
 
 .navbar a{
-    color: white !important;
+    color: black !important;
     z-index: 1 !important;
     margin-right: 10px !important;
 }
@@ -84,3 +84,9 @@ html, body {
 #tableData_paginate .pagination .page-item{
     margin: 5px 8px !important;
 }
+
+/* #dataTables_length label{
+    background-color: red !important;
+    display: flex !important;
+    justify-content: start !important;
+} */

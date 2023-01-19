@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg bg-secondary position-fixed shadow w-100" style="top: 0 !important; z-index: 10 !important;">
+<nav class="navbar navbar-expand-lg bg-white position-fixed shadow w-100" style="top: 0 !important; z-index: 10 !important;">
     <div class="container-fluid"> 
     <a class="navbar-brand ps-3" href="#">
         <img src="<?= $main_url ?>assets/img/logoKel.png" width="40" alt="">
@@ -39,7 +39,7 @@
             </ul>
             <?php if($dataLogin == null){?>
                 <li class="nav-item position-relative ps-2 bg-primary rounded" style="list-style: none;">
-                    <a href="<?= $main_url ?>login_user" class="nav-link text-center" style="text-decoration: none;">Login</a>
+                    <a href="<?= $main_url ?>login_user" class="nav-link text-center text-light" style="text-decoration: none;">Login</a>
                 </li>
             <?php }else{?>
                 <li class="nav position-relative ps-2 bg-primary rounded" style="list-style: none;">
