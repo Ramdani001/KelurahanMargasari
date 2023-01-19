@@ -13,4 +13,3 @@
 
     <!-- MyStyle -->
     <link rel="stylesheet" href="<?php echo $main_url?>assets/style/style.css">
-    

@@ -12,7 +12,9 @@
  <!-- Data Table -->
  <script src="<?php echo $main_url?>assets/style/dataTables/jquery.dataTables.min.js"></script>
  <script src="<?php echo $main_url?>assets/style/dataTables/dataTables.bootstrap4.min.js"></script>
-
+ 
+ <!-- Print -->
+ <script src="<?php echo $main_url?>assets/style/dataTables/print.js"></script>
  
  <script>
 
