@@ -168,6 +168,8 @@
                     }
                 }
 
+                $aksi .= "<button onclick=libPrint('".$encryptParse."') class='btn btn-sm btn-warning'> <i class='fa-solid fa-print' style='color: white;'></i></button> ";
+
                 if($r["status"] == "Diajukan"){
                     $aksi .= "<button onclick=editData('".$encryptParse."') class='btn btn-sm btn-success'> <i class='fa-solid fa-pen' style='color: white;'></i></button> ";
                     $aksi .= "<button onclick=deleteData(".$r["id"].") class='btn btn-sm btn-danger'> <i class='fa-solid fa-trash' style='color: white;'></i></button>";

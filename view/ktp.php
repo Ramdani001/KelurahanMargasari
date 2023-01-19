@@ -150,13 +150,19 @@
         <!-- End Content -->
         
     </div>
+    
+    <!-- Panggil File Print -->
     <?php include('view/print/ktpPrint.php')?>
+    
+    
     <!-- Script Src / Footer -->
     <?php include('view/layout/footer.php');?> 
     <!-- End Script Src / Footer -->
     <!-- Custom Script Disini -->
     <script>
         
+
+        // FUNGSI PRINT
         var libInpEl = document.getElementById("libInp");
 
         function libPrint(value) {
@@ -175,6 +181,7 @@
             libInpEl.style.display = "none";
 
         }
+        // SELESAI PRINT
 
         var table;
 

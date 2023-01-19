@@ -155,11 +155,37 @@
         </div>
     </div>
 <!-- End Table -->
-
-<?php include('view/layout/footer.php');?>
-
-<!-- Custom Script Disini -->
+    <!-- Panggil File Print -->
+    <?php include('view/print/kkPrint.php')?>
+    
+    
+    <!-- Script Src / Footer -->
+    <?php include('view/layout/footer.php');?> 
+    <!-- End Script Src / Footer -->
+    <!-- Custom Script Disini -->
     <script>
+        
+
+        // FUNGSI PRINT
+        var libInpEl = document.getElementById("libInp");
+
+        function libPrint(value) {
+            var value = JSON.parse(atob(value))
+            console.log(value);
+
+            libInpEl.style.display = "block";
+            document.getElementById("namaPrint").innerHTML = "<?php echo $dataLogin['namaLengkap']?>";
+            document.getElementById("nikPrint").innerHTML = value.nik;
+            document.getElementById("noPelayananPrint").innerHTML = value.noPelayanan;
+            document.getElementById("keteranganPrint").innerHTML = value.keterangan;
+            document.getElementById("tanggalPrint").innerHTML = "Cirebon, "+value.tanggal;
+            document.getElementById("tandatanganPrint").innerHTML = "<?php echo $dataLogin['namaLengkap']?>";
+
+            printJS('libInp', 'html');
+            libInpEl.style.display = "none";
+
+        }
+        // SELESAI PRINT
 
         var table;
 

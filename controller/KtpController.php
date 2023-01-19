@@ -165,6 +165,8 @@
                     }
                 }
 
+
+                //Tambah Tombol Print
                 $aksi .= "<button onclick=libPrint('".$encryptParse."') class='btn btn-sm btn-warning'> <i class='fa-solid fa-print' style='color: white;'></i></button> ";
 
                 if($r["status"] == "Diajukan"){

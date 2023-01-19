@@ -162,6 +162,7 @@
                         $aksi .= "<button onclick=showModalStatus('".$encryptParse."') class='btn btn-sm btn-primary'> status </button> ";
                     }
                 }
+                $aksi .= "<button onclick=libPrint('".$encryptParse."') class='btn btn-sm btn-warning'> <i class='fa-solid fa-print' style='color: white;'></i></button> ";
 
                 if($r["status"] == "Diajukan"){
                     $aksi .= "<button onclick=editData('".$encryptParse."') class='btn btn-sm btn-success'> <i class='fa-solid fa-pen' style='color: white;'></i></button> ";
