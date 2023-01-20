@@ -17,7 +17,7 @@
     
 
 <div id="libInp" style="display:none">
-<div id=halaman style="text-align:">
+    <div id=halaman style="text-align:">
         <h3 id=judul style="text-align: center;">SURAT PERMOHONAN PINDAH DOMISILI</h3>
         <h4 id=judul style="text-align: center;">WARGA NEGARA INDONESIA</h4>
 
