@@ -29,9 +29,9 @@
         $query = mysqli_query($conn, "SELECT * FROM tabelkelahiran ORDER BY id DESC LIMIT 1");
         $row = mysqli_fetch_assoc($query);
         if($row == null){
-            $noPelayananGenerate = "1 KLRN/".date("Y");
+            $noPelayananGenerate = "1 KLN/".date("Y");
         }else{
-            $noPelayananGenerate = ($row["id"]+1)." KLRN/".date("Y");
+            $noPelayananGenerate = ($row["id"]+1)." KLN/".date("Y");
         }
 
         echo $noPelayananGenerate;
@@ -42,6 +42,8 @@
         // Panggil Ulang Session
         $dataLogin = $_SESSION["dataLogin"];
         
+        $nik = $_POST["nik"];
+
         $noPelayanan = $_POST["noPelayanan"];
         $tanggalPengajuan = $_POST["tanggalPengajuan"];
         $pemohon = $_POST["pemohon"];
@@ -67,8 +69,8 @@
         
         // Masukan Kedalam Query
         $query = "INSERT INTO tabelkelahiran
-        (noPelayanan, tanggalPengajuan, pemohon, umurBayi, hubunganSibayi, hari,tanggalLahir, pukul, tempatLahir, jenisKelahiran, namaBayi, jenisKelamin, anakKe, namaIbu, namaAyah, saksi1, nikSaksi1, saksi2, nikSaksi2,`status`, createdBy, createdAt)
-        VALUES ('$noPelayanan', '$tanggalPengajuan', '$pemohon', '$umurBayi', '$hubunganSibayi', '$hari','$tanggalLahir', '$pukul', '$tempatLahir', '$jenisKelahiran', '$namaBayi', '$jenisKelamin','$anakKe','$namaIbu', '$namaAyah', '$saksi1','$nikSaksi1', '$saksi2', '$nikSaksi2', '$status', '$createdBy', '$createdAt')";
+        (noPelayanan, tanggalPengajuan, nik ,pemohon, umurBayi, hubunganSibayi, hari,tanggalLahir, pukul, tempatLahir, jenisKelahiran, namaBayi, jenisKelamin, anakKe, namaIbu, namaAyah, saksi1, nikSaksi1, saksi2, nikSaksi2,`status`, createdBy, createdAt)
+        VALUES ('$noPelayanan','$tanggalPengajuan', '$nik', '$pemohon', '$umurBayi', '$hubunganSibayi', '$hari','$tanggalLahir', '$pukul', '$tempatLahir', '$jenisKelahiran', '$namaBayi', '$jenisKelamin','$anakKe','$namaIbu', '$namaAyah', '$saksi1','$nikSaksi1', '$saksi2', '$nikSaksi2', '$status', '$createdBy', '$createdAt')";
 
         mysqli_query($conn, $query);
         echo 200;
@@ -83,14 +85,17 @@
             0 =>'id', 
             1 =>'noPelayanan',
             2 => 'tanggalPengajuan',
-            3 => 'pemohon',
-            4 => 'namaBayi',
-            5 => 'umurBayi',
-            6 => 'tanggalLahir',
-            7 => 'namaIbu',
-            8 => 'namaAyah',
-            9 => 'status',
-            10 => 'aksi',
+            3 => 'nik',
+            4 => 'pemohon',
+            5 => 'namaBayi',
+            6 => 'umurBayi',
+            7 => 'tanggalLahir',
+            8 => 'namaIbu',
+            9 => 'namaAyah',
+            10 => 'status',
+            10=> 'createdBy',
+            11=> 'createdAt',
+            12 => 'aksi',
             // 8 => 'pukul',
             // 9 => 'tempatLahir',
             // 10 => 'jenisKelahiran',
@@ -137,6 +142,7 @@
             $query = mysqli_query($conn, "SELECT * FROM tabelkelahiran 
                 WHERE noPelayanan LIKE '%$search%' 
                 or tanggalPengajuan LIKE '%$search%' 
+                or nik LIKE '%$search%' 
                 or pemohon LIKE '%$search%' 
                 or umurBayi LIKE '%$search%' 
                 or hubunganSibayi LIKE '%$search%' 
@@ -161,6 +167,7 @@
             $querycount = mysqli_query($conn, "SELECT count(id) as jumlah FROM tabelkelahiran 
                 WHERE noPelayanan LIKE '%$search%' 
                 or tanggalPengajuan LIKE '%$search%' 
+                or nik LIKE '%$search%' 
                 or pemohon LIKE '%$search%' 
                 or umurBayi LIKE '%$search%' 
                 or hubunganSibayi LIKE '%$search%' 
@@ -193,6 +200,7 @@
                 $nestedData['no'] = $no;
                 $nestedData['noPelayanan'] = $r['noPelayanan'];
                 $nestedData['tanggalPengajuan'] = $r['tanggalPengajuan'];
+                $nestedData['nik'] = $r['nik'];
                 $nestedData['pemohon'] = $r['pemohon'];
                 $nestedData['umurBayi'] = $r['umurBayi'];
                 $nestedData['hubunganSibayi'] = $r['hubunganSibayi'];
@@ -225,6 +233,8 @@
                 // Enskripsi Data Agar Tidak Error Saat Fetch Data ke javascript
                 $encryptParse = base64_encode(json_encode($r));
                 //Tambahkan Button Aksi
+                
+
                 if($dataLogin["levelUser"] == "admin"){
                     if($r["status"] == "Diajukan"){
                         $aksi .= "<button onclick=showModalStatus('".$encryptParse."') class='btn btn-sm btn-primary'> status </button> ";
@@ -286,6 +296,7 @@
         $nikSaksi1 = $_POST["nikSaksi1"];
         $saksi2 = $_POST["saksi2"];
         $nikSaksi2 = $_POST["nikSaksi2"];
+        $nik = $dataLogin["nik"];
         if($dataLogin["levelUser"] == "admin"){
             $nik = $_POST["nik"];
         }
@@ -294,6 +305,7 @@
         $query = "UPDATE tabelkelahiran SET
             noPelayanan = '$noPelayanan',
             tanggalPengajuan = '$tanggalPengajuan',
+            nik = '$nik',
             pemohon = '$pemohon',
             umurBayi = '$umurBayi',
             hubunganSibayi = '$hubunganSibayi',

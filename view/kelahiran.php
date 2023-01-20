@@ -51,6 +51,25 @@
                         Tanggal Pengajuan
                     </label>
                 </div>
+                <?php if($dataLogin["levelUser"] == "admin"){?>
+                    <div class="form-floating mb-3">
+                        <select name="nik" id="nik" class="form-control">
+                            <?php for($i = 0; $i<count($nikData); $i++){?>
+                            <option class="optStatus" value="<?=$nikData[$i]["nik"]?>"><?=$nikData[$i]["nik"]?> - <?=$nikData[$i]["namaLengkap"]?></option>
+                            <?php }?>
+                        </select> 
+                        <label for="floatingInput">
+                            NIK
+                        </label>
+                    </div>  
+                <?php } else {?>
+                    <div class="form-floating mb-3">
+                        <input id="nik" type="text" id="nik" class="form-control mb-3" value="<?= $dataLogin["nik"]; ?>" readonly>
+                        <label for="nik">
+                                NIK
+                        </label>    
+                    </div>    
+                <?php }?>
                 <div class="form-floating mb-3">
                     <input type="text" class="form-control" id="pemohon" name="pemohon">
                     <label for="pemohon">
@@ -249,6 +268,7 @@
                         <th>No</th>
                         <th>No Pelayan</th>
                         <th>Tanggal Pengajuan</th>
+                        <th>NIK</th>
                         <th>Pemohon</th>
                         <th>Nama Bayi</th>
                         <th>Umur Bayi</th>
@@ -287,12 +307,12 @@
             console.log(value);
 
             libInpEl.style.display = "block";
-            document.getElementById("namaPrint").innerHTML = "<?php echo $dataLogin['namaLengkap']?>";
+            document.getElementById("namaPrint").innerHTML =value.pemohon;
             document.getElementById("nikPrint").innerHTML = value.nik;
             document.getElementById("noPelayananPrint").innerHTML = value.noPelayanan;
             document.getElementById("keteranganPrint").innerHTML = value.keterangan;
             document.getElementById("tanggalPrint").innerHTML = "Cirebon, "+value.tanggal;
-            document.getElementById("tandatanganPrint").innerHTML = "<?php echo $dataLogin['namaLengkap']?>";
+            document.getElementById("tandatanganPrint").innerHTML =value.pemohon;
 
             printJS('libInp', 'html');
             libInpEl.style.display = "none";
@@ -317,6 +337,7 @@
                     { "data": "no" },
                     { "data": "noPelayanan" },
                     { "data": "tanggalPengajuan" },
+                    { "data": "nik" },
                     { "data": "pemohon" },
                     { "data": "namaBayi" },
                     { "data": "umurBayi" },
@@ -373,6 +394,7 @@
            var id = $("#id").val();
            var noPelayanan = $("#noPelayanan").val();
            var tanggalPengajuan = $("#tanggalPengajuan").val();
+           var nik = $("#nik").val();
            var pemohon = $("#pemohon").val();
            var umurBayi = $("#umurBayi").val();
            var hubunganSibayi = $("#hubunganSibayi").val();
@@ -413,6 +435,7 @@
                        id: id,
                        noPelayanan: noPelayanan,
                        tanggalPengajuan: tanggalPengajuan,
+                       nik: nik,
                        pemohon : pemohon,
                        umurBayi : umurBayi,
                        hubunganSibayi : hubunganSibayi,
@@ -491,9 +514,16 @@
            $("#nikSaksi1").val(value.nikSaksi1);
            $("#saksi2").val(value.saksi2);
            $("#nikSaksi2").val(value.nikSaksi2);
+           
+           <?php if($dataLogin["levelUser"] == "admin"){?>
+            $('#nik option').filter(function(){
+                return this.value == value.nik;
+            }).prop("selected", true)
+           <?php }?>
 
            // Munculkan Modal
            $("#staticBackdrop").modal('toggle');
+
        }
 
        <?php if($dataLogin["levelUser"] == "admin"){?>
