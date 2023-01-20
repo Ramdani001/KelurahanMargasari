@@ -17,28 +17,53 @@
     
 
 <div id="libInp" style="display:none">
-    <div id=halaman>
-        <h3 id=judul>SURAT PINDAH DOMISILI</h3>
+<div id=halaman style="text-align:">
+        <h3 id=judul style="text-align: center;">SURAT PERMOHONAN PINDAH DOMISILI</h3>
+        <h4 id=judul style="text-align: center;">WARGA NEGARA INDONESIA</h4>
 
-        <p>Saya yang bertanda tangan di bawah ini :</p>
-
-        <table>
+        <br>
+        <br>
+        <br>
+        <table style="width: 100%;">
             <tr>
-                <td style="width: 30%;">Nama</td>
+                <td style="width: 40%;">Pengajuan</td>
                 <td style="width: 5%;">:</td>
-                <td style="width: 65%;"  id="namaPrint"></td>
+                <td style="width: 75%;">Online</td>
             </tr>
             <tr>
-                <td style="width: 30%;">NIK</td>
+                <td><br></td>
+            </tr>
+            <tr>
+                <td style="width: 40%;">Jenis Permohonan</td>
                 <td style="width: 5%;">:</td>
-                <td style="width: 65%;" id="nikPrint"></td>
+                <td style="width: 75%;" id=keteranganPrint></td>
+            </tr>
+            <tr>
+                <td><br></td>
+            </tr>
+            <tr>
+                <td style="width: 40%;">Nama Pemohon</td>
+                <td style="width: 5%;">:</td>
+                <td style="width: 75%;" id=namaPrint></td>
+            </tr>
+            <tr>
+                <td><br></td>
+            </tr>
+            <tr>
+                <td style="width: 40%;">NIK</td>
+                <td style="width: 5%;">:</td>
+                <td style="width: 75%;" id="nikPrint"></td>
             </tr>
         </table>
 
-        <p>Mengajukan Permohonan Pelayanan PINDAH DOMISILI Dengan Nomor Pelayanan <b id="noPelayananPrint"></b> dengan Keterangan <div id="keteranganPrint"></div> </p>
-
-        <div style="width: 50%; text-align: left; float: right;" id="tanggalPrint"> </div><br>
-        <div style="width: 50%; text-align: left; float: right;">Yang bertanda tangan,</div><br><br><br><br><br>
-        <div style="width: 50%; text-align: left; float: right;" id="tandatanganPrint"></div>
+        <p>Mengajukan Permohonan Pelayanan Pindah Domisili Dengan Nomor Pelayanan <b id="noPelayananPrint"></b></p>
+        <br>
+        <br>
+        <br>
+        <div style="width: 100%; text-align: right;">
+            <div style="width: 100%;" id="tanggalPrint"> </div><br>
+            <div style="width: 100%;">Yang bertanda tangan,</div><br><br><br><br><br>
+            <div style='width: 100%;' id=tandatanganPrint></div>
+        </div>
     </div>
 </div>

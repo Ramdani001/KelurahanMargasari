@@ -136,7 +136,7 @@
                         <th>Jenis Pelayanan</th>
                         <th>Keterangan</th>
                         <th>Status</th>
-                        <th>Aksi</th>
+                        <th>Aksi</th> 
                     </tr>
                 </thead>
                 <tbody> 
@@ -154,7 +154,14 @@
     <!-- Script Src / Footer -->
     <?php include('view/layout/footer.php');?> 
     <!-- End Script Src / Footer -->
-    <!-- Custom Script Disini -->
+    <!-- Custom Script Disini --> 
+    <?php
+        if($dataLogin['levelUser'] == 'admin'){
+            $ttd = ".............";
+        }else{
+            $ttd = $dataLogin['namaLengkap'];
+        }
+    ?>
     <script>
         
 

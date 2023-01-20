@@ -67,7 +67,7 @@
                         <input id="nik" type="text" id="nik" class="form-control mb-3" value="<?= $dataLogin["nik"]; ?>" readonly>
                         <label for="nik">
                                 NIK
-                        </label>    
+                        </label>     
                     </div>    
                 <?php }?>
                 <div class="form-floating mb-3">
@@ -296,6 +296,13 @@
     <?php include('view/layout/footer.php');?> 
     <!-- End Script Src / Footer -->
     <!-- Custom Script Disini -->
+    <?php
+        if($dataLogin['levelUser'] == 'admin'){
+            $ttd = ".............";
+        }else{
+            $ttd = $dataLogin['namaLengkap'];
+        }
+    ?>
     <script>
         
 
@@ -306,12 +313,13 @@
             var value = JSON.parse(atob(value))
             console.log(value);
 
+            const date = new Date();
+
             libInpEl.style.display = "block";
             document.getElementById("namaPrint").innerHTML =value.pemohon;
             document.getElementById("nikPrint").innerHTML = value.nik;
             document.getElementById("noPelayananPrint").innerHTML = value.noPelayanan;
-            document.getElementById("keteranganPrint").innerHTML = value.keterangan;
-            document.getElementById("tanggalPrint").innerHTML = "Cirebon, "+value.tanggal;
+            document.getElementById("tanggalPrint").innerHTML = "Cirebon, "+ date.getDate() + "-" + date.getMonth() + "-" + date.getFullYear();
             document.getElementById("tandatanganPrint").innerHTML =value.pemohon;
 
             printJS('libInp', 'html');

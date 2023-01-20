@@ -159,6 +159,13 @@
     <?php include('view/layout/footer.php');?> 
     <!-- End Script Src / Footer -->
     <!-- Custom Script Disini -->
+    <?php
+        if($dataLogin['levelUser'] == 'admin'){
+            $ttd = ".............";
+        }else{
+            $ttd = $dataLogin['namaLengkap'];
+        }
+    ?>
     <script>
         
 
@@ -175,7 +182,7 @@
             document.getElementById("noPelayananPrint").innerHTML = value.noPelayanan;
             document.getElementById("keteranganPrint").innerHTML = value.keterangan;
             document.getElementById("tanggalPrint").innerHTML = "Cirebon, "+value.tanggal;
-            document.getElementById("tandatanganPrint").innerHTML = "<?php echo $dataLogin['namaLengkap']?>";
+            document.getElementById("tandatanganPrint").innerHTML = "<?php echo $ttd?>";
 
             printJS('libInp', 'html');
             libInpEl.style.display = "none";

@@ -59,7 +59,7 @@
                                 <label for="floatingInput">
                                     NIK
                                 </label>
-                            </div>  
+                            </div>   
                             <?php } else {?>
                                 <div class="form-floating mb-3">
                                     <input id="nik" type="text" id="nik" class="form-control mb-3" value="<?= $dataLogin["nik"]; ?>" readonly>
@@ -185,6 +185,13 @@
     <?php include('view/layout/footer.php');?> 
     <!-- End Script Src / Footer -->
     <!-- Custom Script Disini -->
+    <?php
+        if($dataLogin['levelUser'] == 'admin'){
+            $ttd = ".............";
+        }else{
+            $ttd = $dataLogin['namaLengkap'];
+        }
+    ?>
     <script>
         
 
@@ -194,14 +201,13 @@
         function libPrint(value) {
             var value = JSON.parse(atob(value))
             console.log(value);
-
+            const date = new Date();
             libInpEl.style.display = "block";
             document.getElementById("namaPrint").innerHTML = "<?php echo $dataLogin['namaLengkap']?>";
             document.getElementById("nikPrint").innerHTML = value.nik;
             document.getElementById("noPelayananPrint").innerHTML = value.noPelayanan;
-            document.getElementById("keteranganPrint").innerHTML = value.keterangan;
-            document.getElementById("tanggalPrint").innerHTML = "Cirebon, "+value.tanggal;
-            document.getElementById("tandatanganPrint").innerHTML = "<?php echo $dataLogin['namaLengkap']?>";
+            document.getElementById("tanggalPrint").innerHTML = "Cirebon, "+ date.getDate() + "-" + date.getMonth() + "-" + date.getFullYear();
+            document.getElementById("tandatanganPrint").innerHTML = "<?php echo $ttd?>";
 
             printJS('libInp', 'html');
             libInpEl.style.display = "none";
